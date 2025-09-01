@@ -1,0 +1,24 @@
+:root{
+    --cursor-font: 2.5rem;
+}
+
+.welcome{
+    font-size: var(--cursor-font);
+    text-align: center;
+    position: absolute;
+    z-index: 99;
+    top: 40vh;
+    height: min-content;
+}
+
+.welcome span{
+    color: beige;
+}
+
+:global(.typed-cursor){
+    font-size: var(--cursor-font);
+}
+
+.welcomed{
+    display: none;
+}

@@ -1,0 +1,63 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    padding: 0 1em;
+    position: fixed;
+    z-index: 1;
+}
+
+.logoBox{
+    display: flex;
+    gap: 1em;
+    cursor: pointer;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.logoTitle{
+    color: white;
+}
+
+.rightNav{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+    width: fit-content;
+
+    & button{
+        border: none;
+        background: transparent;
+    }
+
+    & img{
+        width: 2rem;
+        aspect-ratio: 1/1;
+        /* filter: invert(1); Used to invert the color of the svg */
+        cursor: pointer;
+    }
+}
+
+
+
+.rightNav *{
+    flex-basis: min-content;
+}
+
+.logoBox .imgContainer{
+    width: 5rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: clip;
+}
+.logoBox .imgContainer img{
+    object-fit: cover;
+}
+
+a, a:active, a:visited{
+    text-decoration: none;
+    color: white;
+}
