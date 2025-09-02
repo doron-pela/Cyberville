@@ -1,15 +1,13 @@
 import { useState } from "react";
-import video2 from "../../assets/video-2.mp4";
 import ReactPlayer from "react-player";
 import style from './Hero.module.css';
 import mutedIcon from "../../../public/audio-volume-muted-symbolic-svgrepo-com.svg";
 import unmutedIcon from "../../../public/unmute-svgrepo-com.svg";
+import YouTube  from "react-youtube";
 
 export default function Hero({welcomed}) {
 
     const [muted, setMuted] = useState(true);
-    // const [getNow, setGetNow] = useState(false);
-    // const [paused, setPaused] = useState(false);
 
     function unMute(e){
         if(e.target.matches('video')){
@@ -25,23 +23,12 @@ export default function Hero({welcomed}) {
         onScroll={(e) => unMute(e)}
         onClick={(e) => unMute(e)}
       >
+        
         <img
           src={muted ? mutedIcon : unmutedIcon}
           className={style.mutedIcon}
           onClick={() => setMuted(!muted)}
         />
-
-        {/* <ReactPlayer
-          className={style.player}
-          src={video1}
-          playing={true}
-          muted
-          width="100%"
-          height="100%"
-          onReady={() => {}}
-          onClick={(e) => play(e)}
-          onKeyDown={(e) => play(e)}
-          onScroll={(e) => play(e)} */}
 
         <video
           className={style.player}
@@ -49,11 +36,11 @@ export default function Hero({welcomed}) {
           //   controls
           muted={muted}
         >
-          <source src={video2} type="video/webm" />
-          <source src={video2} type="video/mp4" />
+          <source src={"https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4"} type="video/webm" />
+          <source src={"https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4"} type="video/mp4" />
           <p>
             Your browser doesn't support HTML video. Here is a
-            <a href={video2} download="myVideo.mp4">
+            <a href={"https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4"} download="myVideo.mp4">
               link to the video
             </a>{" "}
             instead.
