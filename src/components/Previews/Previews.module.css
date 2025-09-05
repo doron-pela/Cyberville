@@ -5,51 +5,72 @@
         text-align: center;
         height: fit-1.5ontent;
         color: white;
-        margin: 3em 0;
-        margin-top: 1.5em;
+        margin: 1.5em 0;
+        margin-top: 1em;
     }
 }
 
 
 .previews-grid {
+    position: relative;
+    z-index: 0;
   display: grid;
-  grid-template-columns: repeat(autofit, minmax(350px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr 1fr;
   grid-template-areas: 
     "preview-1 preview-1 preview-2 preview-2"
     "preview-1 preview-1 preview-3 preview-4";
-  gap: 1em;
+  gap: 0em;
   margin: 0 auto;
   width: 85%; 
+  gap: 1em;
+}
+
+.AOSWrapper{
+    transition: z-index 0.3s;
+    z-index: 0;
+}
+
+.AOSWrapper:hover{
+    z-index: 1;
 }
 
 .preview-item{
+    width: 100%;
+    height: 100%; 
+    position: relative;
     cursor: pointer;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
     transition: transform 0.3s ease;
     will-change: transform;
     border-radius: 20px;
-    overflow: hidden;
-
-    &:hover{
-        transform: scale(1.5) translateY(-10%);
-    }
+    overflow: clip;
 }
 
-.preview-item.one {
+.preview-item:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.preview-item.one:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.AOSWrapper.one {
   grid-area: preview-1;
 }
-.preview-item.two {
+.AOSWrapper.two {
   grid-area: preview-2;
 }
-.preview-item.three {
+.AOSWrapper.three {
   grid-area: preview-3;
 }
-.preview-item.four {
+.AOSWrapper.four {
   grid-area: preview-4;
 }
 
-.previews-grid div img{
+.preview-item img{
     object-fit: cover;
     width: 100%;
     height: 100%;

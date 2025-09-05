@@ -18,17 +18,25 @@ export default function Previews(){
       <section className={style["previews-section"]}>
         <h2>Just released</h2>
         <article className={style["previews-grid"]}>
-          <div data-aos={'fade-up'} className={`${style["preview-item"]} ${style["one"]}`}>
-            <img src={previewImage1} alt="" />
+          <div data-aos={'fade-up'} className={`${style["AOSWrapper"]} ${style["one"]}`}>
+            <div className={`${style["preview-item"]} ${style["one"]}`}>
+              <img src={previewImage1} alt="" />
+            </div>
           </div>
-          <div data-aos={'fade-left'} data-aos-delay="100" className={`${style["preview-item"]} ${style["two"]}`}>
-            <img src={previewImage2} alt="" />
+          <div className={`${style["AOSWrapper"]} ${style["two"]}`} data-aos={'fade-left'} data-aos-delay="100">
+            <div className={`${style["preview-item"]} ${style["two"]}`}>
+              <img src={previewImage2} alt="" />
+            </div>
           </div>
-          <div data-aos={'fade-left'} className={`${style["preview-item"]} ${style["three"]}`}>
-            <img src={previewImage3} alt="" />
+          <div className={`${style["AOSWrapper"]} ${style["three"]}`} data-aos={'fade-left'} data-aos-delay="100">
+            <div className={`${style["preview-item"]} ${style["three"]}`}>
+              <img src={previewImage3} alt="" />
+            </div>
           </div>
-          <div data-aos={'fade-up'} data-aos-delay={"200"} className={`${style["preview-item"]} ${style["four"]}`}>
-            <img src={previewImage4} alt="" />
+          <div className={`${style["AOSWrapper"]} ${style["four"]}`} data-aos={'fade-up'} data-aos-delay={"200"}>
+            <div className={`${style["preview-item"]} ${style["four"]}`}>
+              <img src={previewImage4} alt="" />
+            </div>
           </div>
           {/* <div data-aos={'fade-left'} data-aos-delay={"200"} className={`${style["preview-item"]} ${style["five"]}`}>
             <img src={previewImage4} alt="" />
