@@ -1,0 +1,104 @@
+
+.search{
+    height: 80vh;
+    overflow: clip;
+    width: 100%;
+    height: 85vh;
+}
+
+.search-container{
+    position:relative;
+    margin: 2em auto;
+    margin-top: 1.5em;
+    width: 100%;
+    height: 70%;
+    background-color: black;
+}
+
+.search-bar-container{
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar{
+    border-radius: 10px;
+    width: 30%;
+    height: 2.5rem;
+    box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  text-align: center;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.background div {
+  position: absolute;
+  width: 0.001vmin;
+  height: 0.001vmin;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+.background div:nth-child(2) {
+  box-shadow: 0 0 45vmax 45vmax #ff00ff;
+  animation: hue 10s linear infinite, move1 19s linear infinite;
+}
+
+.background div:nth-child(3) {
+  box-shadow: 0 0 45vmax 45vmax #ffffff;
+  animation: hue 15s linear infinite, move2 25s linear infinite;
+}
+
+.background div:nth-child(4) {
+  box-shadow: 0 0 45vmax 45vmax #00ffff;
+  animation: hue 20s linear infinite, move3 15s linear infinite;
+  opacity: 0.2;
+}
+
+/* === Animations === */
+@keyframes hue {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes move1 {
+  0%   { top: 0vh; left: 50vw; }
+  25%  { left: 0vw; }
+  50%  { top: 100vh; }
+  75%  { left: 100vw; }
+  100% { top: 0vh; left: 50vw; }
+}
+
+@keyframes move2 {
+  0%   { top: 50vh; left: 100vw; }
+  25%  { top: 100vh; }
+  50%  { left: 0vw; }
+  75%  { top: 0vh; }
+  100% { top: 50vh; left: 100vw; }
+}
+
+@keyframes move3 {
+  0%   { top: 100vh; left: 50vw; }
+  25%  { left: 100vw; }
+  50%  { top: 0vh; }
+  75%  { left: 0vw; }
+  100% { top: 100vh; left: 50vw; }
+}
