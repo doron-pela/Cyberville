@@ -123,7 +123,15 @@ video::-webkit-media-controls{
     }
 }
 
-
+@media (max-width: 400px){
+	.mutedIcon{
+		position: fixed;
+		width: 2.5rem;
+		height: 3rem;
+		right: .7rem;
+		top: 3rem;
+	}
+}
 
 
 @media (max-width: 500px){
