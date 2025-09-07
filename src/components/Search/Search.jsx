@@ -20,9 +20,8 @@ export default function Search() {
         <div className={style["right-blur"]}></div>
         <div className={style["sub-left-blur"]}></div>
         <div className={style["sub-right-blur"]}></div>
-        <div className={style["search-bar-container"]}>
+        <div data-aos={"fade-up"} className={style["search-bar-container"]}>
           <input
-            data-aos={"fade-up"}
             placeholder={"Search a game"}
             className={style["search-bar"]}
           />

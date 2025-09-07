@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ReactPlayer from "react-player";
 import style from './Hero.module.css';
-import mutedIcon from "../../../public/audio-volume-muted-symbolic-svgrepo-com.svg";
-import unmutedIcon from "../../../public/unmute-svgrepo-com.svg";
+import mutedIcon from "../../assets/audio-volume-muted-symbolic-svgrepo-com.svg";
+import unmutedIcon from "../../assets/unmute-svgrepo-com.svg";
 import YouTube  from "react-youtube";
 
 export default function Hero({welcomed}) {
