@@ -1,6 +1,7 @@
 import aos from "aos";
 import { useEffect } from "react";
 import style from "./Search.module.css";
+import SearchBar from "../SearchBar/SearchBar.jsx";
 
 
 export default function Search() {
@@ -21,10 +22,7 @@ export default function Search() {
         <div className={style["sub-left-blur"]}></div>
         <div className={style["sub-right-blur"]}></div>
         <div data-aos={"fade-up"} className={style["search-bar-container"]}>
-          <input
-            placeholder={"Search a game"}
-            className={style["search-bar"]}
-          />
+          <SearchBar />
         </div>
       </div>
     </section>
