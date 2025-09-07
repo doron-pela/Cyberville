@@ -1,9 +1,14 @@
-import {Link} from 'react-router-dom';
+import {Link, useMatch} from 'react-router-dom';
 import logo from "../../assets/cyberville_icon.png";
 import cartIcon from "../../assets/cart-large-minimalistic-svgrepo-com.svg";
 import style from './Nav.module.css';
+import SearchBar from '../SearchBar/SearchBar';
 
 export default function Nav(){
+   
+    // const inHome = useMatch('/');
+    const inShop = useMatch('/shop');
+
     return (
       <nav>
         <Link to="/" className={style.logoBox}>
@@ -12,6 +17,8 @@ export default function Nav(){
           </div>
           <h1 className={style.logoTitle}>Cyberville</h1>
         </Link>
+
+        {inShop && (<SearchBar />)}
 
         <div className={style.rightNav}>
           <Link>Shop</Link>
