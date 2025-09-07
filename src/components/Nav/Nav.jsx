@@ -2,7 +2,7 @@ import {Link, useMatch} from 'react-router-dom';
 import logo from "../../assets/cyberville_icon.png";
 import cartIcon from "../../assets/cart-large-minimalistic-svgrepo-com.svg";
 import style from './Nav.module.css';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar.jsx';
 
 export default function Nav(){
    
