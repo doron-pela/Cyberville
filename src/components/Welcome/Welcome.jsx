@@ -8,6 +8,8 @@ export default function Welcome({welcomed, setWelcomed}) {
   const el = useRef(null);
 
   useEffect(() => {
+    if(localStorage.getItem('welcomed')) return;
+    
     const typed = new Typed(el.current, {
       strings: ["Welcome <br/> To", ""], 
       typeSpeed: 100,
@@ -17,18 +19,20 @@ export default function Welcome({welcomed, setWelcomed}) {
       onComplete: (self) => {  // Type object's Callback function for when typing is complete
         self.destroy();
         setWelcomed(true);        //Typed object is destroyed after completion
+        localStorage.setItem('welcomed', true);
       }, 
     });
     
     return () => {
       typed.destroy();
+      localStorage.removeItem('welcomed');
     };
   }, []);
 
   return (
     <>
       {welcomed? 
-        null : 
+        null: 
       <div className={welcome.welcome}>
         <span ref={el} />
       </div>}
