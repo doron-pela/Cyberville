@@ -25,7 +25,7 @@
 }
 
 .mutedIcon{
-    z-index: 2;
+    z-index: 10;
     position: fixed;
     width: 2.5rem;
     height: 3rem;
