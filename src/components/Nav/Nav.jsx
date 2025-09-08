@@ -21,7 +21,7 @@ export default function Nav(){
         {inShop && (<SearchBar />)}
 
         <div className={style.rightNav}>
-          <Link>Shop</Link>
+          <Link to={'/shop'}>Shop</Link>
           <button>{cartIcon && <img src={cartIcon} alt="cart-icon" />}</button>
         </div>
       </nav>

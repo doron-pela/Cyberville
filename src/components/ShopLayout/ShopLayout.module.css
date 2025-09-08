@@ -1,0 +1,148 @@
+/* --- reset --- */
+ * {
+  color: white;
+  /* outline: 1px solid red; */
+}
+.container a {
+  text-decoration: none;
+}
+.container li {
+  list-style: none;
+}
+
+.container{
+
+  --navbar-height: 4rem;
+
+
+  position: relative;
+  top: 4rem;
+  height: 100vh;
+  --container-padding: 0;
+  padding: var(--container-padding);
+
+  --side-bar-width: 14rem;
+  --side-bar-indent: 1.5rem;
+  --side-bar-icon-width: 20px;
+  --link-inline-gap: calc(.5*var(--side-bar-indent));
+  --content-width: 100%;
+  --side-bar-gap: 2em;
+  --content-margin-left: calc(var(--side-bar-width) + var(--side-bar-indent));
+  --shrunk-content-margin-left: calc(var(--side-bar-icon-width) + calc(var(--side-bar-indent) + var(--link-inline-gap)) );
+  
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: var(--side-bar-gap);
+  top: calc(var(--side-bar-gap) + var(--navbar-height));
+  bottom: 0;
+  left: var(--side-bar-indent);
+  width: var(--side-bar-width);
+  height: calc(100vh - var(--navbar-height));
+  background: var(--light);
+  z-index: 0;
+  font-family: var(--lato);
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+
+  & .menuIcon {
+    justify-items: flex-start;
+    cursor: pointer;
+    margin-left: -1px;
+  }
+
+  & .menuFlex{
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  & .sideMenu {
+    width: 100%;
+    margin-top: 0;
+  }
+  & .sideMenu li {
+    height: 48px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+    padding-left: 0;
+  }
+  
+  & .sideMenu li a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: var(--dark);
+    white-space: nowrap;
+    overflow-x: clip;
+    gap: var(--link-inline-gap);
+  }
+}
+
+.sidebar .hide {
+  width: 60px;
+}
+
+
+.spinHover:hover {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.burstHover:hover {
+  animation: burst 0.6s ease-in-out;
+}
+@keyframes burst {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Position bottom items */
+.sideMenu.bottom  {
+  justify-self: flex-end;
+  text-align: center;
+}
+
+/* CONTENT */
+.content {
+  position: relative;
+  z-index: 1;
+  background-color: black;
+  height: 100%;
+  width: var(--content-width);
+  flex: 1;
+  margin-left: var(--content-margin-left);
+  transition: margin-left 0.3s ease;
+}
+.contentShrink {
+  margin-left: var(--shrunk-content-margin-left);
+}
+
+.headTitle {
+  height: 40px;
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .content {
+    width: calc(100% - var(--side-bar-icon-width));
+  }
+}
