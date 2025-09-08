@@ -22,7 +22,7 @@
     "preview-1 preview-1 preview-3 preview-4";
   gap: 0em;
   margin: 0 auto;
-  width: 85%; 
+  width: 100%; 
   gap: 1em;
 }
 
@@ -48,12 +48,12 @@
 }
 
 .preview-item:hover{
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition: transform 0.3s ease;
 }
 
 .preview-item.one:hover{
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
     transition: transform 0.3s ease;
 }
 

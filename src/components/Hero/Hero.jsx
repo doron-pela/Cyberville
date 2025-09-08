@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import style from './Hero.module.css';
 import mutedIcon from "../../assets/audio-volume-muted-symbolic-svgrepo-com.svg";
 import unmutedIcon from "../../assets/unmute-svgrepo-com.svg";
 import YouTube  from "react-youtube";
 
-export default function Hero({welcomed}) {
+export default function Hero({welcomed, setWelcomed}) {
 
     const [muted, setMuted] = useState(true);
+
+    useEffect(()=>{
+      async function fetchData(){
+        const unWrapped = await fetch().then((res) => res.json());
+        return unWrapped;
+      }
+
+      const data = fetchData();
+      
+      console.log(data);
+    }, [])
 
     function unMute(e){
         if(e.target.matches('video')){
             e.target.muted = false;
             e.target.volume = 1.0;
         }
+    }
+
+    function clearSiteCache(){
+      localStorage.clear();
+      setWelcomed(true);
     }
 
     return (
@@ -54,6 +70,8 @@ export default function Hero({welcomed}) {
               Your gateway to the ultimate gameverse. Discover, buy, and play the
               newest games the moment they drop, all in one city of pixels.
             </p>
+
+            <button onClick={()=>clearSiteCache()}className={style["pulse"]}>Clear Site cache</button>
         </aside>
         
 

@@ -18,22 +18,22 @@ export default function Previews(){
       <section className={style["previews-section"]}>
         <h2>Just released</h2>
         <article className={style["previews-grid"]}>
-          <div data-aos={'fade-up'} className={`${style["AOSWrapper"]} ${style["one"]}`}>
+          <div data-aos={'fade-right'} data-aos-delay="0" className={`${style["AOSWrapper"]} ${style["one"]}`}>
             <div className={`${style["preview-item"]} ${style["one"]}`}>
               <img src={previewImage1} alt="" />
             </div>
           </div>
-          <div className={`${style["AOSWrapper"]} ${style["two"]}`} data-aos={'fade-left'} data-aos-delay="100">
+          <div className={`${style["AOSWrapper"]} ${style["two"]}`} data-aos={'fade-left'} data-aos-delay="150">
             <div className={`${style["preview-item"]} ${style["two"]}`}>
               <img src={previewImage2} alt="" />
             </div>
           </div>
-          <div className={`${style["AOSWrapper"]} ${style["three"]}`} data-aos={'fade-left'} data-aos-delay="100">
+          <div className={`${style["AOSWrapper"]} ${style["three"]}`} data-aos={'fade-left'} data-aos-delay="200">
             <div className={`${style["preview-item"]} ${style["three"]}`}>
               <img src={previewImage3} alt="" />
             </div>
           </div>
-          <div className={`${style["AOSWrapper"]} ${style["four"]}`} data-aos={'fade-up'} data-aos-delay={"200"}>
+          <div className={`${style["AOSWrapper"]} ${style["four"]}`} data-aos={'fade-up'} data-aos-delay={"300"}>
             <div className={`${style["preview-item"]} ${style["four"]}`}>
               <img src={previewImage4} alt="" />
             </div>

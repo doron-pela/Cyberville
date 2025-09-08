@@ -38,6 +38,8 @@ video::-webkit-media-controls{
 }
 
 
+
+
 .hero-right{
 
 	& .btn{
@@ -121,6 +123,41 @@ video::-webkit-media-controls{
         line-height: 1.2;
         max-width: 400px;
     }
+
+	& button.pulse{
+		width: fit-content;
+		border-radius: 8px;
+		border-top-right-radius: 0;
+		border-bottom-left-radius: 0;
+		border: none;
+		margin-top: 2em;
+		text-wrap: nowrap;
+		padding: 1em;
+		background-color: black;
+		transform: scale(1);
+		transition: transform 0.5s ease;
+		--color: #ef6eae;
+		--hover: #ef8f6e;
+
+		&:active,
+		&:focus {
+			-webkit-animation: pulse 1s;
+			animation: pulse 1s;
+			box-shadow: 0 0 0 2em transparent;
+		}
+
+		&:hover {
+			cursor: pointer;
+			transform: scale(1.2);
+		}
+
+	}
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
 }
 
 @media (max-width: 400px){
