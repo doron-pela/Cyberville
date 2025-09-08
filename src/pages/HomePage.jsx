@@ -10,7 +10,7 @@ export default function HomePage(){
     return (
       <>
         <Welcome welcomed={welcomed} setWelcomed={setWelcomed} />
-        <Hero welcomed={welcomed} />
+        <Hero welcomed={welcomed} setWelcomed={setWelcomed} />
         <Previews />
         <Search />
         {/* <Map /> */}

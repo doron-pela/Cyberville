@@ -12,6 +12,8 @@ export default function Welcome({welcomed, setWelcomed}) {
       setWelcomed(true);
       return;
     }
+
+    if (!el.current) return; 
     
     const typed = new Typed(el.current, {
       strings: ["Welcome <br/> To", ""], 
