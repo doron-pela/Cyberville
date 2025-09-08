@@ -2,6 +2,7 @@
 .search-bar{
     border-radius: 10px;
     min-width: 8rem;
+    color: black;
     margin: 0 8%;
     width: 30%;
     height: 2.5rem;

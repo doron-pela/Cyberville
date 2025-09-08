@@ -25,11 +25,12 @@
   --side-bar-indent: 1.5rem;
   --side-bar-icon-width: 20px;
   --link-inline-gap: calc(.5*var(--side-bar-indent));
-  --content-width: 100%;
+  --content-width: calc(100% - calc(var(--side-bar-width) + var(--side-bar-indent)));
   --side-bar-gap: 2em;
   --content-margin-left: calc(var(--side-bar-width) + var(--side-bar-indent));
   --shrunk-content-margin-left: calc(var(--side-bar-icon-width) + calc(var(--side-bar-indent) + var(--link-inline-gap)) );
   
+    /* overflow-x: scroll; */
 }
 
 /* SIDEBAR */
@@ -134,6 +135,7 @@
 }
 .contentShrink {
   margin-left: var(--shrunk-content-margin-left);
+  width: calc(100% - calc(var(--shrunk-content-margin-left) - var(--side-bar-indent)));
 }
 
 .headTitle {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./ShopLayout.module.css";
+import GameGrid from "../GameGrid/GameGrid";
 import {
   BiMenu,
   BiSolidDashboard,
@@ -33,9 +34,9 @@ export default function SidebarLayout() {
     <main className={styles.container}>
       
       {/* CONTENT */}
-      <section
-        className={`${styles.content} ${isHidden ? styles.contentShrink : ""}`}
-      ></section>
+      <section className={`${styles.content} ${isHidden ? styles.contentShrink : ""}`}>
+          <GameGrid />
+      </section>
       {/* CONTENT END */}
 
       {/* SIDEBAR */}
