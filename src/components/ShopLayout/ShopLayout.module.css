@@ -17,7 +17,6 @@
 
   position: relative;
   top: 4rem;
-  height: 100vh;
   --container-padding: 0;
   padding: var(--container-padding);
 
@@ -127,7 +126,6 @@
   position: relative;
   z-index: 1;
   background-color: black;
-  height: max-content;
   width: var(--content-width);
   flex: 1;
   margin-left: var(--content-margin-left);
@@ -142,9 +140,27 @@
   height: 40px;
 }
 
+
 /* Responsive */
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 400px) and (max-width: 480px) {
   .content {
     width: calc(100% - var(--side-bar-icon-width));
+    padding: 0;
+  }
+
+  .container{
+    overflow-x: scroll;
+  }
+  
+}
+
+
+
+@media (max-width: 399px){
+  .container{
+    overflow-x: scroll;
+  }
+   .sidebar{
+    width: fit-content;
   }
 }

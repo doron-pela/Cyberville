@@ -6,7 +6,6 @@ import screenshot2 from './ss2.jpg'
 import screenshot3 from './ss3.jpg'
 import screenshot4 from "./ss4.jpg"
 import screenshot5 from "./ss5.jpg"
-
 import Video from '../Video/Video.jsx'
 
 export default function GameCard() {
