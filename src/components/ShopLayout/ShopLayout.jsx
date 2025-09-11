@@ -18,9 +18,9 @@ export default function SidebarLayout() {
   useEffect(() => {
     function adjustSidebar() {
       if (window.innerWidth <= 576) {
-        setIsHidden(true);
-      } else {
         setIsHidden(false);
+      } else {
+        // setIsHidden(true);
       }
     }
 
@@ -34,13 +34,13 @@ export default function SidebarLayout() {
     <main className={styles.container}>
       
       {/* CONTENT */}
-      <section className={`${styles.content} ${isHidden ? styles.contentShrink : ""}`}>
+      <section className={`${styles.content} ${isHidden ? "" : styles.contentShrink }`}>
           <GameGrid />
       </section>
       {/* CONTENT END */}
 
       {/* SIDEBAR */}
-      <section className={`${styles.sidebar} ${isHidden ? styles.hide : ""}`}>
+      <section className={`${styles.sidebar} ${isHidden ? "" : styles.hide}`}>
 
         <BiMenu
           size={22}

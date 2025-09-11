@@ -127,7 +127,7 @@
   position: relative;
   z-index: 1;
   background-color: black;
-  height: 100%;
+  height: max-content;
   width: var(--content-width);
   flex: 1;
   margin-left: var(--content-margin-left);

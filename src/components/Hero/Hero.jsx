@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import style from './Hero.module.css';
 import mutedIcon from "../../assets/audio-volume-muted-symbolic-svgrepo-com.svg";
@@ -7,8 +7,6 @@ import nextArrow from "../../assets/arrow-next-small-svgrepo-com.svg";
 import prevArrow from "../../assets/arrow-prev-small-svgrepo-com.svg";
 import YouTube  from "react-youtube";
 
-// import src2 from './video-1.mp4';
-
 import Video from "../Video/Video.jsx";
 
 export default function Hero({welcomed, setWelcomed}) {
@@ -16,18 +14,18 @@ export default function Hero({welcomed, setWelcomed}) {
     const [index, setIndex] = useState(0);
     const [muted, setMuted] = useState(true);
     
-    const videos = ["https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4"];
+    const videos = [
+      "https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4",
+      "https://cyberville-hero-video.sfo3.cdn.digitaloceanspaces.com/video-1.mp4",
+    ];
 
-    // useEffect(()=>{
-    //   async function fetchData(){
-    //     const unWrapped = await fetch().then((res) => res.json());
-    //     return unWrapped;
-    //   }
+     useEffect(() => {
+       async function fetchData() {
+         
+       }
 
-    //   const data = fetchData();
-      
-    //   console.log(data);
-    // }, [])
+       fetchData();
+     }, []);
 
     function unMute(e){
         if(e.target.matches('video')){
@@ -48,12 +46,6 @@ export default function Hero({welcomed, setWelcomed}) {
     function decrementIndex() {
       index === 0? setIndex(videos.length-1): setIndex((index) => index -1);
     }
-
-    
-      console.log(index);
-
-    
-
 
     return (
       <section
