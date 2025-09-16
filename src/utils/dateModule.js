@@ -47,6 +47,6 @@ const monthStrings = [
   "Dec",
 ];
 
-export { monthStrings, calendarRange, pastWeekRange, nextWeekRange }
+export { today, monthStrings, calendarRange, pastWeekRange, nextWeekRange }
 
 

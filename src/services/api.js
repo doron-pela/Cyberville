@@ -1,1 +1,1 @@
-export const clientSecret = import.meta.env.CLIENT_SECRET;
+export const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
