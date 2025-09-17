@@ -1,7 +1,7 @@
 
 .container{
 
-  --side-bar-width: 14rem;
+  --side-bar-width: 15rem;
   --side-bar-indent: 1.5rem;
   --side-bar-icon-width: 20px;
   --link-inline-gap: calc(.5*var(--side-bar-indent));
@@ -14,20 +14,33 @@
 
 /* SIDEBAR */
 .sidebar {
+  scrollbar-width: none;
   position: fixed;
   display: flex;
   flex-direction: column;
   gap: var(--side-bar-gap);
-  top: calc(var(--side-bar-gap) + var(--navbar-height));
+  top: calc( var(--navbar-height));
   bottom: 0;
-  left: var(--side-bar-indent);
+  /* left: var(--side-bar-indent); */
+  border-top-right-radius: 48px;
+  padding-top: calc(var(--side-bar-gap));
+  padding-left: var(--side-bar-indent);
   width: var(--side-bar-width);
-  background: var(--light);
+  background-color: black;
   z-index: 0;
   font-family: var(--lato);
   transition: width 0.3s ease;
   overflow-x: hidden;
-
+  overflow-y: scroll;
+/* 
+  &::before{
+    content: "";
+    width: calc(var(--side-bar-width) + var(--side-bar-indent));
+    background-color: black;
+    position: relative;
+    height: 100%;
+    width: 200%;
+  } */
   & .menuIcon {
     justify-items: flex-start;
     cursor: pointer;
@@ -46,7 +59,7 @@
     margin-top: 0;
   }
   & .sideMenu li {
-    height: 48px;
+    height: 50px;
     border-radius: 48px 0 0 48px;
     padding: 4px;
     padding-left: 0;
@@ -64,14 +77,26 @@
     gap: var(--link-inline-gap);
   }
 
+  & .selected{
+    background-color: rgb(49, 48, 48);
+    background-color: var(--shop-color);
+    /* background-color: white;
+    & *{
+      color: black;
+    } */
+  }
+
   & .subText{
     text-indent: calc(var(--side-bar-icon-width) + var(--side-bar-gap));
     font-size: 11pt;
   }
 }
 
-.sidebar .hide {
-  width: 60px;
+.sidebar.hide {
+  width: 70px;
+  & span{
+    display: none;
+  }
 }
 
 

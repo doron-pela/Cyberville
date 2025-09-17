@@ -26,3 +26,7 @@ export const Platforms = [
   [14, "Web"],
 ];
 
+export const getPlatformId = (platform)=>{
+    const index = Platforms.findIndex((subArray)=>subArray[1].toLowerCase()===platform.toLowerCase());
+    return index+1;
+}

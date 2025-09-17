@@ -28,6 +28,10 @@ export function useGamesForNextWeek(){
     });
 }
 
+export function useGames(){
+  
+}
+
 
 // export function useGenres(){
 //     return useQuery({

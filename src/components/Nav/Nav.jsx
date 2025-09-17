@@ -10,7 +10,7 @@ export default function Nav(){
     const inShop = useMatch('/shop');
 
     return (
-      <nav>
+      <nav className={inShop && style.inShop}>
         <Link to="/" className={style.logoBox}>
           <div className={style.imgContainer}>
             <img src={logo} alt="Cyberville_icon" />
@@ -18,10 +18,10 @@ export default function Nav(){
           <h1 className={style.logoTitle}>Cyberville</h1>
         </Link>
 
-        {inShop && (<SearchBar />)}
+        {inShop && <SearchBar />}
 
         <div className={style.rightNav}>
-          <Link to={'/shop'}>Shop</Link>
+          <Link to={"/shop"}>Shop</Link>
           <button>{cartIcon && <img src={cartIcon} alt="cart-icon" />}</button>
         </div>
       </nav>

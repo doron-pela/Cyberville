@@ -6,12 +6,13 @@ import { IoLogoGameControllerB } from "react-icons/io";
 import { FaTags } from "react-icons/fa";
 
 import styles from './SideBar.module.css'
-import { genreStrings } from '../../utils/Genres.js';
-import { dates } from "../../utils/Dates.js";
-import {Platforms} from '../../utils/Platforms.js'
-import { Tags } from "../../utils/Tags.js";
+import {QueryKeys} from '../../utils/QueryKeys.js'
+// import { genreStrings } from '../../utils/Genres.js';
+// import { dates } from "../../utils/Dates.js";
+// import {Platforms} from '../../utils/Platforms.js'
+// import { Tags } from "../../utils/Tags.js";
 
-export default function SideBar({isHidden, setIsHidden}){
+export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
     useEffect(() => {
         function adjustSidebar() {
           if (window.innerWidth <= 576) {
@@ -44,9 +45,9 @@ export default function SideBar({isHidden, setIsHidden}){
                     </li>
                     {isHidden? null
                     : 
-                        genreStrings.map((genre)=>{
+                        QueryKeys.genres.map((genre, index)=>{
                             return (
-                            <li key={genre}>
+                            <li className={genre===selected? styles.selected: null} onClick={()=>setSelected(QueryKeys.genres[index])} key={genre}>
                                 <a href="#">
                                 <span className={styles.subText}>{genre}</span>
                                 </a>
@@ -65,9 +66,9 @@ export default function SideBar({isHidden, setIsHidden}){
                     </li>
                     {isHidden? null
                     :
-                        dates.map((timeline)=>{
+                        QueryKeys['release dates'].map((timeline, index)=>{
                             return (
-                            <li key={timeline}>
+                            <li className={timeline===selected? styles.selected: null} onClick={()=>setSelected(QueryKeys['release dates'][index])} key={timeline}>
                                 <a href="#">
                                 <span className={styles.subText}>{timeline}</span>
                                 </a>
@@ -86,11 +87,11 @@ export default function SideBar({isHidden, setIsHidden}){
                     </li>
                     {isHidden? null
                     :   
-                        Platforms.map((platform)=>{
+                        QueryKeys.platforms.map((platform, index)=>{
                             return (
-                            <li key={platform}>
+                            <li className={platform[1]===selected? styles.selected: null} onClick={()=>setSelected(QueryKeys.platforms[index][1])} key={platform}>
                                 <a href="#">
-                                <span className={styles.subText}>{platform}</span>
+                                <span className={styles.subText}>{platform[1]}</span>
                                 </a>
                             </li>
                             );
@@ -107,9 +108,9 @@ export default function SideBar({isHidden, setIsHidden}){
                     </li>
                     {isHidden? null
                     :
-                        Tags.map((tag)=>{
+                        QueryKeys.tags.map((tag, index)=>{
                         return (
-                        <li key={tag}>
+                        <li className={tag===selected? styles.selected: null} onClick={()=>setSelected(QueryKeys.tags[index])} key={tag}>
                             <a href="#">
                             <span className={styles.subText}>{tag}</span>
                             </a>

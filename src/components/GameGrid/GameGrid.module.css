@@ -2,17 +2,18 @@
     display: grid;
     place-content: center;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    background-color: black;
-    gap: .7em;   
+    /* background-color: rgb(49, 48, 48);
+    background-color: var(--shop-color); */
+    border: none;
+    gap: 1.5em;   
     width: 100%;
-    padding: 1em;
     position: relative;
-    top: 4rem;
+    padding-right: 10px;
 }
 
 @media (max-width: 600px) {
     .game-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        padding: 10px 0;
+        background-color: transparent;
     }
 }

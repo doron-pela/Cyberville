@@ -1,4 +1,4 @@
-html, *, *::before, *::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -6,6 +6,7 @@ html, *, *::before, *::after {
 
 html, body{
   width: 100%;
+  height: max-content;
   overflow-x: clip;
 }
 
@@ -17,6 +18,7 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   background-color: black;
+  --shop-color: #222222;
 }
 
 
