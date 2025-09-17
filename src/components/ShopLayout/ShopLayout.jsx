@@ -11,10 +11,13 @@ export default function ShopLayout() {
   // const { data, error, isPending } = useGamesForNextWeek();
   const { data, error, isPending } = useGamesForPastWeek();
   // const { data, error, isPending } = useGamesForMonth(3);
+  // const { data, error, isPending } = usePlatforms();
 
   return (
     <main className={styles.container}>
-      <section className={`${styles.content} ${!isHidden ? "" : styles.contentExpand}`}>
+      <section
+        className={`${styles.content} ${!isHidden ? "" : styles.contentExpand}`}
+      >
         <GameGrid data={data} error={error} isPending={isPending} />
       </section>
 

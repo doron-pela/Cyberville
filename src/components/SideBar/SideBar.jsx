@@ -1,12 +1,15 @@
 import {useEffect} from 'react'
 import { MdCategory } from "react-icons/md";
 import { BiMenu, BiSolidCog, BiPowerOff } from "react-icons/bi";
+import { CiCalendarDate } from "react-icons/ci";
+import { IoLogoGameControllerB } from "react-icons/io";
+import { FaTags } from "react-icons/fa";
 
 import styles from './SideBar.module.css'
-import { genreStrings } from '../../services/Genres.js';
-import { dates } from "../../services/Dates.js";
-import {Platforms} from '../../services/Platforms.js'
-import { Tags } from "../../services/Tags.js";
+import { genreStrings } from '../../utils/Genres.js';
+import { dates } from "../../utils/Dates.js";
+import {Platforms} from '../../utils/Platforms.js'
+import { Tags } from "../../utils/Tags.js";
 
 export default function SideBar({isHidden, setIsHidden}){
     useEffect(() => {
@@ -56,7 +59,7 @@ export default function SideBar({isHidden, setIsHidden}){
                 <div>
                     <li className={styles.active}>
                     <a href="#">
-                        <MdCategory size={20} />
+                        <CiCalendarDate size={20} />
                         <span className={styles.text}>Release dates</span>
                     </a>
                     </li>
@@ -77,7 +80,7 @@ export default function SideBar({isHidden, setIsHidden}){
                 <div>
                     <li className={styles.active}>
                     <a href="#">
-                        <MdCategory size={20} />
+                        <IoLogoGameControllerB size={20} />
                         <span className={styles.text}>Platforms</span>
                     </a>
                     </li>
@@ -98,7 +101,7 @@ export default function SideBar({isHidden, setIsHidden}){
                 <div>
                     <li className={styles.active}>
                     <a href="#">
-                        <MdCategory size={20} />
+                        <FaTags size={20} />
                         <span className={styles.text}>Tags</span>
                     </a>
                     </li>

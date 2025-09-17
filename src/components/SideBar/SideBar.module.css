@@ -66,12 +66,8 @@
 
   & .subText{
     text-indent: calc(var(--side-bar-icon-width) + var(--side-bar-gap));
+    font-size: 11pt;
   }
-/* 
-  & .noShow{
-    display: none;
-  } */
-
 }
 
 .sidebar .hide {
