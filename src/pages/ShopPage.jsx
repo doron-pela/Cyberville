@@ -4,9 +4,7 @@ import GameGrid from "../components/GameGrid/GameGrid.jsx";
 export default function ShopPage() {
     
     return(
-        <ShopLayout> 
-            <GameGrid />
-        </ShopLayout>
+        <ShopLayout /> 
     )
 
 }

@@ -1,108 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import styles from "./ShopLayout.module.css";
 import GameGrid from "../GameGrid/GameGrid";
-import {
-  BiMenu,
-  BiSolidDashboard,
-  BiSolidShoppingBagAlt,
-  BiSolidDoughnutChart,
-  BiSolidMessageDots,
-  BiSolidGroup,
-  BiSolidCog,
-  BiPowerOff,
-} from "react-icons/bi";
+import SideBar from '../SideBar/SideBar.jsx';
+import { useGamesForPastWeek } from "../../Hooks/useGames.js";
 
-export default function SidebarLayout() {
-  const [isHidden, setIsHidden] = useState(false);
 
-  useEffect(() => {
-    function adjustSidebar() {
-      if (window.innerWidth <= 576) {
-        setIsHidden(false);
-      } else {
-        // setIsHidden(true);
-      }
-    }
+export default function ShopLayout() {
+  const [isHidden, setIsHidden] = useState(true);
 
-    adjustSidebar();
-    window.addEventListener("resize", adjustSidebar);
+  // const { data, error, isPending } = useGamesForNextWeek();
+  const { data, error, isPending } = useGamesForPastWeek();
 
-    return () => window.removeEventListener("resize", adjustSidebar);
-  }, []);
+  // const { data, error, isPending } = useGamesForMonth(3);
 
   return (
     <main className={styles.container}>
-      
       {/* CONTENT */}
-      <section className={`${styles.content} ${isHidden ? "" : styles.contentShrink }`}>
-          <GameGrid />
+      <section
+        className={`${styles.content} ${!isHidden ? "" : styles.contentExpand}`}
+      >
+        <GameGrid data={data} error={error} isPending={isPending} />
       </section>
       {/* CONTENT END */}
 
-      {/* SIDEBAR */}
-      <section className={`${styles.sidebar} ${isHidden ? "" : styles.hide}`}>
-
-        <BiMenu
-          size={22}
-          onClick={() => setIsHidden((prev) => !prev)}
-          className={styles.menuIcon}
-        />
-
-        <div className={styles.menuFlex}>
-
-          <ul className={`${styles.sideMenu} ${styles.top}`}>
-            <li className={styles.active}>
-              <a href="#">
-                <BiSolidDashboard size={20} />
-                <span className={styles.text}>Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <BiSolidShoppingBagAlt size={20} />
-                <span className={styles.text}>My Store</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <BiSolidDoughnutChart size={20} />
-                <span className={styles.text}>Analytics</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <BiSolidMessageDots size={20} />
-                <span className={styles.text}>Message</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <BiSolidGroup size={20} />
-                <span className={styles.text}>Team</span>
-              </a>
-            </li>
-          </ul>
-        
-          <ul className={`${styles.sideMenu} ${styles.bottom}`}>
-            <li>
-              <a href="#">
-                <BiSolidCog size={20} className={styles.spinHover} />
-                <span className={styles.text}>Settings</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className={styles.logout}>
-                <BiPowerOff size={20} className={styles.burstHover} />
-                <span className={styles.text}>Logout</span>
-              </a>
-            </li>
-          </ul>
-
-        </div>
-        
-      </section>
-
-      {/* SIDEBAR END */}
+      <SideBar isHidden={isHidden} setIsHidden={setIsHidden} />
     </main>
   );
 }

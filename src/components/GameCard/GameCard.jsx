@@ -47,7 +47,7 @@ export default function GameCard({srcCarousel, backgroundImage}) {
                                     } ${
                                       i === carouselIndex ? style["active"] : ""
                                     }`}
-                                    key={src}
+                                    key={src.id}
                                   ></div>
                                 );
                             })}

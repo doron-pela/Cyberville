@@ -1,14 +1,18 @@
 .game-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(385px, 1fr));
-    gap: 1em;   
+    place-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    background-color: black;
+    gap: .7em;   
     width: 100%;
     padding: 1em;
-    padding-right: 3.5em;
+    position: relative;
+    top: 4rem;
 }
 
 @media (max-width: 600px) {
     .game-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 10px 0;
     }
 }

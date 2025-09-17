@@ -1,5 +1,6 @@
 import { getGamesForMonth, getGamesForNextWeek, getGamesForPastWeek } from "../services/Games.js";
 import { today, monthStrings, pastWeekRange, nextWeekRange } from "../utils/dateModule.js";
+// import { getGenres } from '../services/Genres.js'
 import {useQuery} from '@tanstack/react-query'
 
 
@@ -26,3 +27,20 @@ export function useGamesForNextWeek(){
       staleTime: 1000 * 60 * 60,
     });
 }
+
+
+// export function useGenres(){
+//     return useQuery({
+//       queryKey: ["genres"],
+//       queryFn: () => getGenres(),
+//       staleTime: 1000 * 60 * 60,
+//     });
+// }
+
+// export function useTags(){
+//     return useQuery({
+//       queryKey: ["tags"],
+//       queryFn: () => getTags(),
+//       staleTime: 1000 * 60 * 60,
+//     });
+// }
