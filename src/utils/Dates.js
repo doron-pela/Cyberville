@@ -1,1 +1,0 @@
-export const dates = ["Next Week", "Last Week", "Through the year"]
