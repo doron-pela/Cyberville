@@ -10,6 +10,14 @@
     }
 }
 
+.loader{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    position: relative;
+    top: 20rem;
+}
 
 .previews-grid {
     position: relative;
@@ -22,7 +30,7 @@
     "preview-1 preview-1 preview-3 preview-4";
   gap: 0em;
   margin: 0 auto;
-  width: 100%; 
+  width: 85%; 
   gap: 1em;
 }
 
@@ -36,15 +44,15 @@
 }
 
 .preview-item{
-    width: 100%;
-    height: 100%; 
-    position: relative;
-    cursor: pointer;
-    transform: scale(1) translateY(0);
-    transition: transform 0.3s ease;
-    will-change: transform;
-    border-radius: 20px;
-    overflow: clip;
+  width: 100%;
+  height: 100%; 
+  position: relative;
+  cursor: pointer;
+  transform: scale(1) translateY(0);
+  transition: transform 0.3s ease;
+  will-change: transform;
+  border-radius: 20px;
+  overflow: clip;
 }
 
 .preview-item:hover{
@@ -74,6 +82,7 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
+    object-position: center center;
 }
 
 @media (max-width: 500px) {

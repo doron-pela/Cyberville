@@ -15,8 +15,8 @@ export default function Hero({welcomed, setWelcomed}) {
     const [muted, setMuted] = useState(true);
     
     const videos = [
-      "https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4",
       "https://cyberville-hero-video.sfo3.cdn.digitaloceanspaces.com/video-1.mp4",
+      "https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4",
     ];
 
      useEffect(() => {

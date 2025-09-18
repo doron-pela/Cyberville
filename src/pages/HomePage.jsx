@@ -12,7 +12,7 @@ export default function HomePage(){
         <Welcome welcomed={welcomed} setWelcomed={setWelcomed} />
         <Hero welcomed={welcomed} setWelcomed={setWelcomed} />
         <Previews />
-        <Search />
+        {/* <Search /> */}
         {/* <Map /> */}
       </>
     );

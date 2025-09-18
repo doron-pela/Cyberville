@@ -7,19 +7,19 @@ const baseUrl = "https://api.rawg.io/api";
 const games = '/games';
 const page_size = 40;
 
-export const getGamesForPastWeek = async ()=>{
-    const results = await axios.get(`${baseUrl}${games}?dates=${pastWeekRange}&page_size=${page_size}&key=${clientSecret}`);
+export const getGamesForPastWeek = async (page=1)=>{
+    const results = await axios.get(`${baseUrl}${games}?dates=${pastWeekRange}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 
-export const getGamesForNextWeek = async ()=>{
-    const results = await axios.get(`${baseUrl}${games}?dates=${nextWeekRange}&page_size=${page_size}&key=${clientSecret}`);
+export const getGamesForNextWeek = async (page=1)=>{
+    const results = await axios.get(`${baseUrl}${games}?dates=${nextWeekRange}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 
-export const getGamesForMonth = async (monthIndex)=>{
+export const getGamesForMonth = async (monthIndex, page=1)=>{
     const monthRange = calendarRange[monthIndex];
-    const results = await axios.get(`${baseUrl}${games}?dates=${monthRange}&page_size=${page_size}&key=${clientSecret}`);
+    const results = await axios.get(`${baseUrl}${games}?dates=${monthRange}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 
@@ -35,8 +35,8 @@ export const getGamesForMonth = async (monthIndex)=>{
 
     //return getGamesForDates with arg as query fn
 
-export const getGamesForDates = async (range)=>{
-    const results = await axios.get(`${baseUrl}${games}?dates=${range}&page_size=${page_size}&key=${clientSecret}`);
+export const getGamesForDates = async (range, page=1)=>{
+    const results = await axios.get(`${baseUrl}${games}?dates=${range}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 
@@ -45,8 +45,8 @@ export const getGamesForDates = async (range)=>{
     
     //return getGamesForGenre with arg as query fn
 
-export const getGamesForGenre = async (genre)=>{
-    const results = await axios.get(`${baseUrl}${games}?genres=${genre}&page_size=${page_size}&key=${clientSecret}`);
+export const getGamesForGenre = async (genre, page=1)=>{
+    const results = await axios.get(`${baseUrl}${games}?genres=${genre}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 
@@ -55,8 +55,8 @@ export const getGamesForGenre = async (genre)=>{
     
     //return getGamesForGenre with arg as query fn
 
-export const getGamesForTag = async (tag)=>{
-    const results = await axios.get(`${baseUrl}${games}?tags=${tag}&page_size=${page_size}&key=${clientSecret}`);
+export const getGamesForTag = async (tag, page=1)=>{
+    const results = await axios.get(`${baseUrl}${games}?tags=${tag}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 
@@ -65,8 +65,8 @@ export const getGamesForTag = async (tag)=>{
     
     //return getGamesForPlatform with arg as query fn
 
-export const getGamesForPlatform = async (platformId)=>{
-    const results = await axios.get(`${baseUrl}${games}?parent_platforms=${platformId}&page_size=${page_size}&key=${clientSecret}`);
+export const getGamesForPlatform = async (platformId, page=1)=>{
+    const results = await axios.get(`${baseUrl}${games}?parent_platforms=${platformId}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 

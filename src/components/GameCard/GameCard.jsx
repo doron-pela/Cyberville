@@ -1,4 +1,5 @@
 import {useState, useRef} from 'react'
+import{useMatch} from 'react-router-dom'
 import style from "./GameCard.module.css"
 // import backgroundImage from './background-image.jpg'
 // import screenshot1 from './ss1.jpg'
@@ -13,6 +14,8 @@ export default function GameCard({srcCarousel, backgroundImage}) {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const dotRefs = useRef([]);
     const containerRef = useRef(null);
+
+    const inShop = useMatch('/shop');
 
     
     function showCarousel(e){
@@ -29,7 +32,7 @@ export default function GameCard({srcCarousel, backgroundImage}) {
     }
 
     return(
-        <div className={style["game-card"]}>
+        <div style={inShop?{'height':'300px'}:{height:'100%'}} className={style["game-card"]}>
             <div onMouseMove={(e)=>showCarousel(e)} onMouseLeave={()=>setCarouselShowing(false)} className={style["image-container"]} ref={containerRef}>
                 {carouselShowing && srcCarousel && srcCarousel.length>0? //Only showing gallery if there's more than one picture and in the hover state
                     <>
