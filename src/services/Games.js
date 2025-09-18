@@ -23,8 +23,50 @@ export const getGamesForMonth = async (monthIndex)=>{
     return results.data;
 }
 
+// We import all the ranges into the query hook
+
+//useQuery will by default take key, index, and monthindex (3 args)
+//if Querykeys.key at index i is of type array, then return get games by month fetcher
+
+//if key === release dates, then check what key[index] is: 
+    //if next Week let arg = nextWeekRange.
+    //same for lastWeek
+    //if key[index] === through the year, get month index from state var (which will be set by date display) and let arg = calendarRange[monthIndex]
+
+    //return getGamesForDates with arg as query fn
+
+export const getGamesForDates = async (range)=>{
+    const results = await axios.get(`${baseUrl}${games}?dates=${range}&page_size=${page_size}&key=${clientSecret}`);
+    return results.data;
+}
+
+//if key === genres: 
+    //let arg = key[index];
+    
+    //return getGamesForGenre with arg as query fn
+
 export const getGamesForGenre = async (genre)=>{
     const results = await axios.get(`${baseUrl}${games}?genres=${genre}&page_size=${page_size}&key=${clientSecret}`);
+    return results.data;
+}
+
+//if key === tags, then: 
+    //let arg = key[index];
+    
+    //return getGamesForGenre with arg as query fn
+
+export const getGamesForTag = async (tag)=>{
+    const results = await axios.get(`${baseUrl}${games}?tags=${tag}&page_size=${page_size}&key=${clientSecret}`);
+    return results.data;
+}
+
+//if key === platforms, then: 
+    //let arg = index+1;
+    
+    //return getGamesForPlatform with arg as query fn
+
+export const getGamesForPlatform = async (platformId)=>{
+    const results = await axios.get(`${baseUrl}${games}?parent_platforms=${platformId}&page_size=${page_size}&key=${clientSecret}`);
     return results.data;
 }
 

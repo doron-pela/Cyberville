@@ -136,6 +136,19 @@
     margin-left: 1em;
     margin-bottom: .5em;
   }
+
+  & .monthList{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    margin-left: 1.5em;
+    margin-bottom: 2em;
+
+    & *:hover{
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }
 
 

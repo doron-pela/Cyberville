@@ -31,7 +31,7 @@ export default function GameCard({srcCarousel, backgroundImage}) {
     return(
         <div className={style["game-card"]}>
             <div onMouseMove={(e)=>showCarousel(e)} onMouseLeave={()=>setCarouselShowing(false)} className={style["image-container"]} ref={containerRef}>
-                {carouselShowing && srcCarousel.length>0? //Only showing gallery if there's more than one picture and in the hover state
+                {carouselShowing && srcCarousel && srcCarousel.length>0? //Only showing gallery if there's more than one picture and in the hover state
                     <>
                         {srcCarousel.map((src, i)=>{
                             return <img key={src.image} src={src.image} className={`${style['screenshot']} ${style[i+1]} ${i===carouselIndex? style['active']: ""}`}/>
@@ -54,7 +54,7 @@ export default function GameCard({srcCarousel, backgroundImage}) {
                         </div>
                     </>
                     : 
-                    (<img className={style['cover-image']} src={backgroundImage} alt="BackgroundImage" />)}
+                    (<img className={style['cover-image']} src={backgroundImage} alt="No Images for this game yet" />)}
             </div>
             <div className={style["data-container"]}>
 

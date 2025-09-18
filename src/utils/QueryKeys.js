@@ -1,6 +1,8 @@
+import {monthStrings} from './dateModule.js'
+
 export const QueryKeys = {
-    "genres" : ["Action","Indie","Adventure","RPG","Strategy","Shooter","Casual","Simulation","Puzzle","Arcade","Platformer","Massively Multiplayer","Racing","Sports","Fighting","Family","Board Games","Card","Educational"],
-    "release dates" : ["Next Week", "Last Week", "Through the year"],
+    "genres" : ["action","indie","adventure","role-playing-games-rpg","strategy","shooter","casual","simulation","puzzle","arcade","platformer","massively-multiplayer","racing","sports","fighting","family","board-games","card","educational"],
+    "release dates" : ["Next Week", "Last Week", ["Through the year", monthStrings]],
     "platforms" : [[1, "PC"],[2, "PlayStation"], [3, "Xbox"], [4, "iOS"], [5, "Apple Macintosh"],[6, "Linux"], [7, "Nintendo"], [8, "Android"], [9, "Atari"], [10, "Commodore / Amiga"], [11, "SEGA"], [12, "3DO"], [13, "Neo Geo"], [14, "Web"],],
-    "tags": ['Singleplayer', 'Steam Achievements', 'Multiplayer', 'Full controller support', 'Steam Cloud', 'Atmospheric', 'steam-trading-cards', 'Great Soundtrack', 'RPG', 'Co-op']
+    "tags": ['singleplayer', 'steam-achievements', 'multiplayer', 'full-controller-support', 'steam-cloud', 'atmospheric', 'steam-trading-cards', 'great-soundtrack', 'rpg', 'co-op', "mature"]
 }

@@ -16,7 +16,7 @@ export default function GameGrid({ data, isPending, error }) {
           games.map((game) => (
             <GameCard
               key={game['id']}
-              srcCarousel={game["short_screenshots"].filter((_, index)=> index!==0)} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+              srcCarousel={game["short_screenshots"]? game["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
               backgroundImage={game["background_image"]}
             />
           ))
