@@ -1,5 +1,6 @@
 .game-card{
     border-radius: 15px;
+    position: relative;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background: none;
@@ -9,12 +10,29 @@
     flex-direction: column;
     transition: transform 0.2s;
     cursor: pointer;
+
 }
 
 .image-container{
     width: 100%;
-    height: 100%;
     position: relative;
+    height: 100%;
+
+
+    &.inShop{
+        height: 70%;
+        position: absolute;
+        /* & .screenshot, .cover-image{
+            max-height: 350px;
+        } */
+
+    }
+
+    .videoLoader{
+        position: absolute;
+        top: 45%;
+        left: 47%;
+    }
 
     & .screenshot, .cover-image{
         display: none;
@@ -58,3 +76,4 @@
         }
     }
 }
+

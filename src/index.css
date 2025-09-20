@@ -18,7 +18,7 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   background-color: black;
-  --shop-color: #222222;
+  --sidebar-color: #222222;
   --shop-color: black;
 }
 

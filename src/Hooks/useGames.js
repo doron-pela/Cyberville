@@ -1,14 +1,15 @@
-import { getGamesForGenre, getGamesForDates, getGamesForMonth, getGamesForPlatform, getGamesForTag } from "../services/Games.js";
+import { getGamesForGenre, getGamesForDates, getGamesForMonth, getGamesForPlatform, getGamesForTag, getGameForSearch } from "../services/Games.js";
 import { pastWeekRange, nextWeekRange } from "../utils/dateModule.js";
+import { getGameWithVideo, getVideosForGame } from "../services/Movies.js";
 // import { getPlatforms } from '../utils/Platforms.js'
 import {QueryKeys} from '../utils/QueryKeys.js';
-import {useInfiniteQuery} from '@tanstack/react-query'
+import {useInfiniteQuery, useQuery} from '@tanstack/react-query'
 
 
 export function useGames({key, index}, monthIndex){
   return useInfiniteQuery({
     queryKey: [key, QueryKeys[key][index], monthIndex],
-    queryFn: ({pageParam =1}) => {
+    queryFn: ({pageParam=1}) => {
       if(key==='release dates'&&Array.isArray(QueryKeys[key][index])) return getGamesForMonth(monthIndex, pageParam);
       if(key==='release dates'&&QueryKeys[key][index]==='Next Week') return getGamesForDates(nextWeekRange, pageParam);
       if(key==='release dates'&&QueryKeys[key][index]==='Last Week') return getGamesForDates(pastWeekRange, pageParam);
@@ -32,6 +33,37 @@ export function useGames({key, index}, monthIndex){
     staleTime: 1000 * 60 * 60,
   });
 }
+
+export function useGameWithVideo(gameId){
+  return useQuery({
+    queryKey: ['gameWithVideo', gameId],
+    queryFn: () => getGameWithVideo(gameId),
+    staleTime: Infinity, 
+    cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
+  });
+}
+
+export function useVideosForGame(gameId, enabled) {
+  return useQuery({
+    queryKey: [gameId],
+    queryFn: () => getVideosForGame(gameId),
+    enabled,
+    staleTime: Infinity,
+    cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
+  });
+}
+
+
+export function useGameSearch(searchTerm, enabled) {
+  return useQuery({
+    queryKey: [searchTerm],
+    queryFn: () => getGameForSearch(searchTerm),
+    enabled,
+    staleTime: Infinity,
+    cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
+  });
+}
+
 
 
 // export function useGenres(){

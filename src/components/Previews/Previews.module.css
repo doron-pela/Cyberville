@@ -1,6 +1,6 @@
 .previews-section {
     width: 100%;
-    margin-top: -4rem;
+    position: relative;
 
     & h2{
         text-align: center;
@@ -25,15 +25,16 @@
     z-index: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr;
+  grid-auto-rows: 50vh;
   grid-template-areas: 
     "preview-1 preview-1 preview-2 preview-2"
     "preview-1 preview-1 preview-3 preview-4";
   gap: 0em;
   margin: 0 auto;
   width: 90%; 
+  /* height: 0%; */
   gap: 1em;
-  margin-bottom: 5rem;
+  padding-bottom: 5rem;
 }
 
 .AOSWrapper{
@@ -81,7 +82,7 @@
 }
 
 .preview-item img{
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%;
     object-position: center center;

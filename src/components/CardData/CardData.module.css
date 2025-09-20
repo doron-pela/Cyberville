@@ -1,0 +1,32 @@
+.cardData{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: .5em 1em;
+    height: 30%;
+    width: 100%;
+    background-color: var(--sidebar-color);
+}
+
+.title{
+    font-size: 14pt;
+    font-weight: 700; 
+}
+
+.icons{
+    margin-right: .3em;
+}
+
+.top, .bottom{
+    display: flex;
+    justify-content: space-between;
+    text-wrap: wrap;
+}
+
+.top{
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .5em;
+}

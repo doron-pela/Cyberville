@@ -31,17 +31,14 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
 
     return (
     <section onClick={()=>setIsHidden((prev)=>!prev)} className={`${styles.sidebar} ${isHidden ? styles.hide : ""}`}>
-        <BiMenu
-        size={22}
-        // onClick={() => setIsHidden((prev) => !prev)}
-        className={styles.menuIcon}
-        />
+
+        <BiMenu size={22} className={styles.menuIcon}/>
 
         <div className={styles.menuFlex}>
             <ul className={`${styles.sideMenu} ${styles.top}`}>
                 
                 <div>
-                    <li className={styles.active}>
+                    <li className={selected.key==="platforms"&&isHidden? styles.selected: null}>
                     <a href="#">
                         <IoLogoGameControllerB size={iconSize} />
                         <span className={styles.text}>Platforms</span>
@@ -50,12 +47,13 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                     {isHidden? null
                     :   
                         QueryKeys.platforms.map((platform, i)=>{
-                            const Icon = platformIcons[i].icon;
+                            const string = platform[1];
+                            const Icon = platformIcons[string];
                             return (
                             <li className={platform===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>setSelected({key: 'platforms', index: i})} key={platform}>
                                 <a className={styles.subTextWrapper} href="#">
                                 <span className={styles.subText}>
-                                    {platformIcons[i] && <Icon className={styles.icon} size={iconSize}/>}
+                                    {Icon && <Icon className={styles.icon} size={iconSize}/>}
                                     {platform[1]}
                                 </span>
                                 </a>
@@ -66,7 +64,7 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                 </div>
 
                 <div>
-                    <li className={styles.active}>
+                    <li className={selected.key==="release dates"&&isHidden? styles.selected: null}>
                     <a href="#">
                         <CiCalendarDate size={iconSize} />
                         <span className={styles.text}>Release dates</span>
@@ -87,7 +85,7 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                 </div>
 
                 <div>
-                    <li className={styles.active}>
+                    <li className={selected.key==="genres"&&isHidden? styles.selected: null}>
                     <a href="#">
                         <MdCategory size={iconSize} />
                         <span className={styles.text}>Genres</span>
@@ -109,7 +107,7 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                 </div>
 
                 <div>
-                    <li className={styles.active}>
+                    <li className={selected.key==="tags"&&isHidden? styles.selected: null}>
                     <a href="#">
                         <FaTags size={iconSize} />
                         <span className={styles.text}>Tags</span>

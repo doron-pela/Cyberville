@@ -7,6 +7,11 @@ const baseUrl = "https://api.rawg.io/api";
 const games = '/games';
 const page_size = 40;
 
+export const getGameForSearch = async (searchTerm) =>{
+    const results = await axios.get(`${baseUrl}${games}?search=${searchTerm}&key=${clientSecret}`);
+    return results.data;
+}
+
 export const getGamesForPastWeek = async (page=1)=>{
     const results = await axios.get(`${baseUrl}${games}?dates=${pastWeekRange}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;

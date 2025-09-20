@@ -1,16 +1,5 @@
 
-.container{
 
-  --side-bar-width: 15rem;
-  --side-bar-indent: 1.5rem;
-  --side-bar-icon-width: 20px;
-  --link-inline-gap: calc(.5*var(--side-bar-indent));
-  --content-width: calc(100% - calc(var(--side-bar-width) + var(--side-bar-indent)));
-  --side-bar-gap: 2em;
-  --content-margin-left: calc(var(--side-bar-width) + var(--side-bar-indent));
-  --shrunk-content-margin-left: calc(var(--side-bar-icon-width) + calc(var(--side-bar-indent) + var(--link-inline-gap)) );
-  
-}
 
 /* SIDEBAR */
 .sidebar {
@@ -77,7 +66,7 @@
     display: flex;
     align-items: center;
     border-radius: 48px;
-    font-size: 16px;
+    font-size: 12pt;
     color: var(--dark);
     white-space: nowrap;
     overflow-x: clip;
@@ -93,7 +82,6 @@
   }
 
   & .subTextWrapper{
-    text-indent: calc(var(--side-bar-gap));
     margin-left: calc(var(--side-bar-icon-width));
 
     & .icon{
@@ -114,17 +102,22 @@
     }
   }
   & .subText{
-    text-indent: calc(var(--side-bar-icon-width));
-    font-size: 11pt;
+    text-indent: calc(var(--side-bar-icon-width) - 10px);
+    font-size: 10.5pt;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    /* max-width: 60%; */
   }
 }
 
 .sidebar.hide {
   width: 70px;
+  padding-left: .5em;
   & span{
     display: none;
+  }
+  & svg{
+    margin-left: 1em;
   }
 }
 

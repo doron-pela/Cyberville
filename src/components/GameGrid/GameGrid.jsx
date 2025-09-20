@@ -30,7 +30,6 @@ export default function GameGrid({ data, isPending, error, fetchNextPage, hasNex
 
     if (error) return <p>Error fetching games: {error.message}</p>;
     const games = data?.pages.flatMap(page => page.results) ?? [];
-    console.log(games);
     
 
     return (
@@ -38,13 +37,14 @@ export default function GameGrid({ data, isPending, error, fetchNextPage, hasNex
         {games.map((game) => (
             <GameCard
               key={game['id']}
+              gameData={game}
               srcCarousel={game["short_screenshots"]? game["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
               backgroundImage={game["background_image"]}
             />
           ))
         }
 
-        <div ref={loadMoreRef} className={style.loadMoreTrigger}>
+        <div ref={loadMoreRef} className={`${style['loadMoreTrigger']} ${hasNextPage? style['morePages'] : ""}`}>
           {isFetchingNextPage 
           ? 
               <ClimbingBoxLoader color={'white'} size={20}/>

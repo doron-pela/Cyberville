@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {useGames} from '../../Hooks/useGames.js'
+import {useGames, useGameWithVideo} from '../../Hooks/useGames.js'
 import style from './Previews.module.css';
 import GameCard from '../GameCard/GameCard.jsx';
 import { ClimbingBoxLoader } from 'react-spinners';
@@ -17,14 +17,27 @@ export default function Previews(){
     aos.init({duration: 500});
   },[])
 
-  const monthIndex = new Date().getMonth();
+  // //comment this whole block to use cached fetch
+  // //get game1
+  // const {data: gameWithVideoData} = useGameWithVideo(3498); //Returns the video game gta. Comment this out after it runs for the first time to allow localStorage caching.
+  // localStorage.setItem("gameWithVideoData", JSON.stringify(gameWithVideoData)); 
 
-  function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  //uncomment this whole block to use cached fetch
+  const gameWithVideoData = JSON.parse(localStorage.getItem("gameWithVideoData"));
 
-  const previews = {key: "release dates", index: 2}; //action category at index 0
-  const { data, error, isPending } = useGames(previews, monthIndex+1);
+
+
+
+  // //comment this whole block to use cached fetch
+  // const monthIndex = new Date().getMonth();
+  // const previews = {key: "platforms", index: 1}; //action category at index 0
+  // const { data: previewsData, error, isPending } = useGames(previews, monthIndex);
+  // localStorage.setItem("previewsData", JSON.stringify(previewsData));
+
+  //uncomment this whole block to use cached fetch
+  const previewsData = JSON.parse(localStorage.getItem("previewsData"));
+  const isPending = false;
+  const error = false;
 
   if (isPending)
     return (
@@ -32,18 +45,41 @@ export default function Previews(){
         <ClimbingBoxLoader color={"white"} size={50} />
       </div>
     );
-
   if (error) return <p>Error fetching games: {error.message}</p>;
-
-  const games = data?.pages.flatMap(page => page.results) ?? [];
+  //games: the final games list of size 'n' - 40 in this case
+  const games = previewsData?.pages.flatMap(page => page.results) ?? []; //The shape of the response data has .pages (the pages/batches of games returned for each game list. Each page then has a .results containing the list of games)
   if (!games.length) return <p>No games found.</p>;
-  console.log(data);
 
-  const randomIndex1 = getRandomNumber(1, games.length - 1);
+
+
+
+  
+  //get games 2,3 and 4 from games array
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  //Calculate random index for each game grid item from the games results array
   const randomIndex2 = getRandomNumber(1, games.length - 1);
   const randomIndex3 = getRandomNumber(1, games.length - 1);
   const randomIndex4 = getRandomNumber(1, games.length - 1);
+
+
+
+
+
+  //Store reference for each game object. 
+  const game1 = gameWithVideoData;
+  const game2 = games[randomIndex2];
+  const game3 = games[randomIndex3];
+  const game4 = games[randomIndex4];
+  //game object cache setters. Comment/uncomment depending on first fetch
+  // localStorage.setItem("game2", game2);
+  // localStorage.setItem("game3", game3);
+  // localStorage.setItem("game4", game4);
   
+
+
+
     return (
       <section className={style["previews-section"]}>
         <h2>Just released</h2>
@@ -51,40 +87,44 @@ export default function Previews(){
           <div data-aos={'fade-right'} data-aos-delay="0" className={`${style["AOSWrapper"]} ${style["one"]}`}>
             <div className={`${style["preview-item"]} ${style["one"]}`}>
               <GameCard
-                className={style["preview-card"]}
-                key={games[randomIndex1]['id']}
-                srcCarousel={games[randomIndex1]["short_screenshots"]? games[randomIndex1]["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={games[randomIndex1]["background_image"]}
+                //This card is for the only game with video we can get: GTA V
+                gameData={game1}
+                key={game1}
+                srcCarousel={game1["short_screenshots"]? game1["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                backgroundImage={game1["background_image"]}
               />
             </div>
           </div>
           <div className={`${style["AOSWrapper"]} ${style["two"]}`} data-aos={'fade-left'} data-aos-delay="150">
             <div className={`${style["preview-item"]} ${style["two"]}`}>
               <GameCard 
+                gameData={game2}
                 className={style["preview-card"]}
-                key={games[randomIndex2]['id']}
-                srcCarousel={games[randomIndex2]["short_screenshots"]? games[randomIndex2]["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={games[randomIndex2]["background_image"]}
+                key={game2['id']}
+                srcCarousel={game2["short_screenshots"]? game2["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                backgroundImage={game2["background_image"]}
               />
             </div>
           </div>
           <div className={`${style["AOSWrapper"]} ${style["three"]}`} data-aos={'fade-left'} data-aos-delay="200">
             <div className={`${style["preview-item"]} ${style["three"]}`}>
               <GameCard
+                gameData={game3}
                 className={style["preview-card"]}
-                key={games[randomIndex3]['id']}
-                srcCarousel={games[randomIndex3]["short_screenshots"]? games[randomIndex3]["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={games[randomIndex3]["background_image"]}
+                key={game3['id']}
+                srcCarousel={game3["short_screenshots"]? game3["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                backgroundImage={game3["background_image"]}
               />
             </div>
           </div>
           <div className={`${style["AOSWrapper"]} ${style["four"]}`} data-aos={'fade-up'} data-aos-delay={"300"}>
             <div className={`${style["preview-item"]} ${style["four"]}`}>
               <GameCard
+                gameData={game4}
                 className={style["preview-card"]}
-                key={games[randomIndex4]['id']}
-                srcCarousel={games[randomIndex4]["short_screenshots"]? games[randomIndex4]["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={games[randomIndex4]["background_image"]}
+                key={game4['id']}
+                srcCarousel={game4["short_screenshots"]? game4["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                backgroundImage={game4["background_image"]}
               />
             </div>
           </div>

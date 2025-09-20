@@ -14,12 +14,18 @@
     position: absolute;
     left: 45%;
     bottom: -10rem;
+    padding-bottom: 5rem;
+
+    &.morePages{
+        padding-bottom: 0;
+    }
 }
 
 .game-grid{
     display: grid;
     place-content: center;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-auto-rows: minmax(360px, auto);
     /* background-color: rgb(49, 48, 48);
     background-color: var(--shop-color); */
     border: none;

@@ -16,7 +16,7 @@
   background-color: var(--shop-color);
   height: 100%;
 
-  --side-bar-width: 16em;
+  --side-bar-width: 15em;
   --side-bar-indent: 1.5em;
   --side-bar-icon-width: 20px;
   --link-inline-gap: calc(.8*var(--side-bar-indent));
@@ -147,6 +147,10 @@
     & *:hover{
       text-decoration: underline;
       cursor: pointer;
+    }
+
+    & .selectedMonth{
+      text-decoration: underline;
     }
   }
 }
