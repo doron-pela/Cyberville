@@ -29,16 +29,21 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
     function handleIsEnded(){
       setVideoIsEnded(true); //The state of video is ended is handled in the video card and used to substitute out the video component if is ended is true. The video component internally sets this on its onEnd event.
     }
+
     function handleHover() {
       if (!vFetchEnabled&&!inShop&&gameData?.['id']===3498) {
         // console.log("fetch is enabled with hover");
         setVFetchEnabled(true); // only trigger fetch if its not already triggered and if the game id is not GTA 5
-        if(videoIsEnded === true){
-          setVideoIsEnded(false); //on hover, if the video ended before, set videoIsEnded to its initial state (false) on the next hover so it an play again
-        }
-        
+        setVideoIsEnded(false); //on hover, if the video ended before, set videoIsEnded to its initial state (false) on the next hover so it an play again
       }
     }
+
+    function handleMouseLeave(){
+      setCarouselShowing(false);
+      setVFetchEnabled(false);
+      setVideoIsEnded(true);
+    }
+
     function showCarousel(e){
         setCarouselShowing(true);
 
@@ -61,7 +66,7 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
               <div className={`${style["image-container"]} ${inShop? style["inShop"] : ""}`} ref={containerRef}
                     onMouseEnter={()=>handleHover()} 
                     onMouseMove={(e)=>showCarousel(e)} 
-                    onMouseLeave={()=>{setCarouselShowing(false)}}
+                    onMouseOut={()=>handleMouseLeave()}
                   > 
                     {vFetchEnabled && videoDataPending && !inShop? (<div className={style.videoLoader}><ClipLoader color={"white"} size={100} /></div>) : null}
                     {carouselShowing && srcCarousel && srcCarousel.length>0? //Only showing gallery if there's more than one picture and in the hover state
