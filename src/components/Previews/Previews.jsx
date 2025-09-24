@@ -24,6 +24,7 @@ export default function Previews(){
 
   //uncomment this whole block to use cached fetch
   const gameWithVideoData = JSON.parse(localStorage.getItem("gameWithVideoData"));
+  console.log(gameWithVideoData);
 
 
 
@@ -79,53 +80,60 @@ export default function Previews(){
   
 
 
-
     return (
       <section className={style["previews-section"]}>
         <h2>Just released</h2>
         <article className={style["previews-grid"]}>
           <div data-aos={'fade-right'} data-aos-delay="0" className={`${style["AOSWrapper"]} ${style["one"]}`}>
             <div className={`${style["preview-item"]} ${style["one"]}`}>
-              <GameCard
-                //This card is for the only game with video we can get: GTA V
-                gameData={game1}
-                key={game1}
-                srcCarousel={game1["short_screenshots"]? game1["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={game1["background_image"]}
-              />
+              
+                <GameCard
+                  //This card is for the only game with video we can get: GTA V
+                  gameData={game1}
+                  key={game1}
+                  srcCarousel={game1["short_screenshots"]? game1["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  backgroundImage={game1["background_image"]}
+                />
+              
             </div>
           </div>
           <div className={`${style["AOSWrapper"]} ${style["two"]}`} data-aos={'fade-left'} data-aos-delay="150">
             <div className={`${style["preview-item"]} ${style["two"]}`}>
-              <GameCard 
-                gameData={game2}
-                className={style["preview-card"]}
-                key={game2['id']}
-                srcCarousel={game2["short_screenshots"]? game2["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={game2["background_image"]}
-              />
+              
+                <GameCard
+                  gameData={game2}
+                  className={style["preview-card"]}
+                  key={game2['id']}
+                  srcCarousel={game2["short_screenshots"]? game2["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  backgroundImage={game2["background_image"]}
+                />
+              
             </div>
           </div>
           <div className={`${style["AOSWrapper"]} ${style["three"]}`} data-aos={'fade-left'} data-aos-delay="200">
             <div className={`${style["preview-item"]} ${style["three"]}`}>
-              <GameCard
-                gameData={game3}
-                className={style["preview-card"]}
-                key={game3['id']}
-                srcCarousel={game3["short_screenshots"]? game3["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={game3["background_image"]}
-              />
+              
+                <GameCard
+                  gameData={game3}
+                  className={style["preview-card"]}
+                  key={game3['id']}
+                  srcCarousel={game3["short_screenshots"]? game3["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  backgroundImage={game3["background_image"]}
+                />
+              
             </div>
           </div>
           <div className={`${style["AOSWrapper"]} ${style["four"]}`} data-aos={'fade-up'} data-aos-delay={"300"}>
             <div className={`${style["preview-item"]} ${style["four"]}`}>
-              <GameCard
-                gameData={game4}
-                className={style["preview-card"]}
-                key={game4['id']}
-                srcCarousel={game4["short_screenshots"]? game4["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
-                backgroundImage={game4["background_image"]}
-              />
+              
+                <GameCard
+                  gameData={game4}
+                  className={style["preview-card"]}
+                  key={game4['id']}
+                  srcCarousel={game4["short_screenshots"]? game4["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  backgroundImage={game4["background_image"]}
+                />
+              
             </div>
           </div>
           {/* <div data-aos={'fade-left'} data-aos-delay={"200"} className={`${style["preview-item"]} ${style["five"]}`}>

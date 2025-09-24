@@ -1,7 +1,7 @@
 import style from "./GameGrid.module.css"
 import GameCard from "../GameCard/GameCard"
 import{ClimbingBoxLoader} from 'react-spinners'
-import { useEffect, useRef } from "react";
+import { useEffect, useRef} from "react";
 
 export default function GameGrid({ data, isPending, error, fetchNextPage, hasNextPage, isFetchingNextPage }) {
 
@@ -41,7 +41,7 @@ export default function GameGrid({ data, isPending, error, fetchNextPage, hasNex
               srcCarousel={game["short_screenshots"]? game["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
               backgroundImage={game["background_image"]}
             />
-          ))
+        ))
         }
 
         <div ref={loadMoreRef} className={`${style['loadMoreTrigger']} ${hasNextPage? style['morePages'] : ""}`}>

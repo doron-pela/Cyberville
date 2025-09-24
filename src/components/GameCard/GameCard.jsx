@@ -1,10 +1,11 @@
-import {useState, useRef} from 'react'
-import{useMatch} from 'react-router-dom'
-import { useVideosForGame} from '../../Hooks/useGames.js'
+import {useState, useRef, useContext, useEffect} from 'react'
+import { useVideosForGame } from '../../Hooks/useGames.js'
+import{useMatch, useNavigate} from 'react-router-dom'
 import style from "./GameCard.module.css"
 import Video from '../Video/Video.jsx'
 import CardData from '../CardData/CardData.jsx'
 import { ClimbingBoxLoader, ClipLoader } from 'react-spinners'
+import {GameContext} from "../../contexts/contexts.js";
 
 export default function GameCard({srcCarousel, backgroundImage, gameData=null}) {
     const [carouselShowing, setCarouselShowing] = useState(false);
@@ -14,6 +15,8 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
     const dotRefs = useRef([]);
     const containerRef = useRef(null);
     const inShop = useMatch('/shop');
+    const navigate = useNavigate();
+    const {setGameFromCollection} = useContext(GameContext);
 
 
     // //comment this block to use chached fetch
@@ -57,9 +60,15 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
         })
     }   
 
+    function handleClick(game){
+      setGameFromCollection(game); //Sets our current game data in our outletProvider's parent component's state. The context now becomes available to all child components
+      localStorage.setItem(`${gameData["id"]}`, JSON.stringify(gameData)); //uniquely caches this game's Data with its key as "id"
+      navigate(`/${game['id']}`);
+    }   
+
     return( 
         //When we hover the card and the game Data's movie_count>0, this game has a video. Hence, we enable our query fn to with fetch
-        <div className={`${style["game-card"]}`}> 
+        <div onClick={()=>handleClick(gameData)} className={`${style["game-card"]}`}> 
             {
               vFetchEnabled&&videoData?.['count']>0&&videoIsEnded===false? <Video src={videoData?.["results"][0]['data']["max"]} muted={true} handleVideoEnd={handleIsEnded}/>
               : 

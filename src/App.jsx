@@ -3,6 +3,7 @@ import {Outlet} from 'react-router-dom';
 import Welcome from './components/Welcome/Welcome.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import Hero from './components/Hero/Hero.jsx';
+import GameContextProvider from './contexts/GameContext.jsx';
 
 function App() {
 
@@ -11,7 +12,9 @@ function App() {
   return (
     <>
       <Nav />
-      <Outlet context={{welcomed, setWelcomed}}/>
+      <GameContextProvider>
+        <Outlet context={{ welcomed, setWelcomed }} />
+      </GameContextProvider>
     </>
   );
 }

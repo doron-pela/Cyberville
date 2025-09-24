@@ -1,4 +1,4 @@
-import { getGamesForGenre, getGamesForDates, getGamesForMonth, getGamesForPlatform, getGamesForTag, getGameForSearch } from "../services/Games.js";
+import { getGamesForGenre, getGamesForDates, getGamesForMonth, getGamesForPlatform, getGamesForTag, getGamesForSearch, getGameForId } from "../services/Games.js";
 import { pastWeekRange, nextWeekRange } from "../utils/dateModule.js";
 import { getGameWithVideo, getVideosForGame } from "../services/Movies.js";
 // import { getPlatforms } from '../utils/Platforms.js'
@@ -34,6 +34,15 @@ export function useGames({key, index}, monthIndex){
   });
 }
 
+export function useGameForId(gameId){
+  return useQuery({
+    queryKey: ["gameObject", gameId],
+    queryFn: () => getGameForId(gameId),
+    staleTime: Infinity,
+    cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
+  });
+}
+
 export function useGameWithVideo(gameId){
   return useQuery({
     queryKey: ['gameWithVideo', gameId],
@@ -45,7 +54,7 @@ export function useGameWithVideo(gameId){
 
 export function useVideosForGame(gameId, enabled) {
   return useQuery({
-    queryKey: [gameId],
+    queryKey: ["videosForGame", gameId],
     queryFn: () => getVideosForGame(gameId),
     enabled,
     staleTime: Infinity,
@@ -56,8 +65,8 @@ export function useVideosForGame(gameId, enabled) {
 
 export function useGameSearch(searchTerm, enabled) {
   return useQuery({
-    queryKey: [searchTerm],
-    queryFn: () => getGameForSearch(searchTerm),
+    queryKey: ["searchTerm", searchTerm],
+    queryFn: () => getGamesForSearch(searchTerm),
     enabled,
     staleTime: Infinity,
     cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
