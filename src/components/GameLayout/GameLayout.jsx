@@ -2,13 +2,14 @@ import {useEffect, useState, useContext} from 'react'
 import { useParams} from "react-router-dom";
 import { useGameForId } from "../../Hooks/useGames";
 import { GameContext } from '../../contexts/contexts.js';
+import ImageCarousel from '../ImageCarousel/ImageCarousel.jsx'
 import style from './GameLayout.module.css'
 
 export default function GameLayout(){
     const {gameId} = useParams();
     const [cached, setCached] = useState(null);
     const {gameFromCollection, setGameFromCollection} = useContext(GameContext);
-    const thisGame = gameFromCollection || cached; 
+    const thisGame = cached || gameFromCollection;                  //We will either use the game in the global context, or the game in the cache. 
 
     // console.log("game from collection: ");console.dir(gameFromCollection)
     // console.log("game from cache: ");console.dir(cached)
@@ -47,26 +48,18 @@ export default function GameLayout(){
     
     
     return (
-        <div className={style.gameDetails}>
-            <div className={style.topBar}>
-                <div className={style.goBack}>{"<"}</div>
-                <h1 className={style.title} >{thisGame?.["name"]}</h1>
-            </div>
-            <div className={style.container}>
-                <div className={style.carouselWindow}>
-                    <div className={style.imageCarousel}>
-                        {thisGame?.['short_screenshots'].map((screenshot)=>{
-                            return <img key={screenshot.id} src={screenshot.image} className={style.image} />
-                        })}
-                    </div>
-                </div>
-                <div className={style.details}>
-                    <div className={style.top}>
-                    </div>
-                    <div className={style.bottom}>
-                    </div>
-                </div>
-            </div>
+      <div className={style.gameDetails}>
+        <div className={style.topBar}>
+          <div className={style.goBack}>{"<"}</div>
+          <h1 className={style.title}>{thisGame?.["name"]}</h1>
         </div>
-    )
+        <div className={style.container}>
+          {thisGame?.["short_screenshots"] ? <ImageCarousel screenshots={thisGame?.["short_screenshots"]} /> : null}
+          <div className={style.details}>
+            <div className={style.top}></div>
+            <div className={style.bottom}></div>
+          </div>
+        </div>
+      </div>
+    );
 }
