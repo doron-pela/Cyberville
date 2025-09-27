@@ -1,5 +1,5 @@
 import style from './ImageCarousel.module.css'
-import {useState, useEffect, useRef} from 'react';
+import {useState} from 'react';
 import prevArrow from "../../assets/arrow-prev-small-svgrepo-com.svg";
 import nextArrow from "../../assets/arrow-next-small-svgrepo-com.svg";
 

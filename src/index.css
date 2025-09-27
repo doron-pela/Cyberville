@@ -17,9 +17,13 @@ html, body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
+  scroll-behavior: smooth;
   background-color: black;
   --sidebar-color: #222222;
   --shop-color: black;
+
+  scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
 

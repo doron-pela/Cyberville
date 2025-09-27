@@ -1,8 +1,9 @@
-import {useEffect, useState, useContext} from 'react'
+import {useEffect, useState, useContext, useRef} from 'react'
 import { useParams} from "react-router-dom";
 import { useGameForId } from "../../Hooks/useGames";
 import { GameContext } from '../../contexts/contexts.js';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.jsx'
+import Reviews from '../Reviews/Reviews.jsx'
 import style from './GameLayout.module.css'
 
 export default function GameLayout(){
@@ -10,6 +11,32 @@ export default function GameLayout(){
     const [cached, setCached] = useState(null);
     const {gameFromCollection, setGameFromCollection} = useContext(GameContext);
     const thisGame = cached || gameFromCollection;                  //We will either use the game in the global context, or the game in the cache. 
+
+    const reviewRef = useRef(null);
+    const [progress, setProgress] = useState(0);
+    const [fixed, setFixed] = useState(false);
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          const ratio = entry.intersectionRatio;
+          setProgress(ratio);
+
+          if (ratio >= 1) setFixed(true);
+          else setFixed(false);
+        },
+        {
+          root: document.querySelector(".gameDetails"),
+          rootMargin: "0% 0% -30% 0%",
+          threshold: Array.from({ length: 101 }, (_, i) => i / 100),
+        }
+      );
+
+      if (reviewRef.current) observer.observe(reviewRef.current);
+      return () => observer.disconnect();
+    }, [gameId]);
 
     // console.log("game from collection: ");console.dir(gameFromCollection)
     // console.log("game from cache: ");console.dir(cached)
@@ -43,23 +70,139 @@ export default function GameLayout(){
 
 
     //Used localStorage caching and context here for 
-    // const {data: game} = useGameForId(gameId);
+    // const {data: fetchedGame} = useGameForId(gameId);
+
+    const dummyRedditUrl = "https://www.reddit.com/r/GrandTheftAutoV/";
+    const dummyMetaCritic= [
+    {
+      "metascore": 96,
+      "url": "https://www.metacritic.com/game/pc/grand-theft-auto-v",
+      "platform": {
+        "platform": 4,
+        "name": "PC",
+        "slug": "pc"
+      }
+    },
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/playstation-3/grand-theft-auto-v",
+      "platform": {
+        "platform": 16,
+        "name": "PlayStation 3",
+        "slug": "playstation3"
+      }
+    },
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/playstation-4/grand-theft-auto-v",
+      "platform": {
+        "platform": 18,
+        "name": "PlayStation 4",
+        "slug": "playstation4"
+      }
+    },
+    {
+      "metascore": 96,
+      "url": "https://www.metacritic.com/game/pc/grand-theft-auto-v",
+      "platform": {
+        "platform": 4,
+        "name": "PC",
+        "slug": "pc"
+      }
+    },
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/playstation-3/grand-theft-auto-v",
+      "platform": {
+        "platform": 16,
+        "name": "PlayStation 3",
+        "slug": "playstation3"
+      }
+    },
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/playstation-4/grand-theft-auto-v",
+      "platform": {
+        "platform": 18,
+        "name": "PlayStation 4",
+        "slug": "playstation4"
+      }
+    }
+  ];
+  const ratings = [
+    {
+      "id": 5,
+      "title": "exceptional",
+      "count": 4328,
+      "percent": 59.02
+    },
+    {
+      "id": 4,
+      "title": "recommended",
+      "count": 2397,
+      "percent": 32.69
+    },
+    {
+      "id": 3,
+      "title": "meh",
+      "count": 466,
+      "percent": 6.35
+    },
+    {
+      "id": 1,
+      "title": "skip",
+      "count": 142,
+      "percent": 1.94
+    }
+  ]
+
+    const backgroundStyle = {
+      filter: `blur(${progress * 10}px)`,
+    };
             
-    
-    
+   function scrollUp() {
+     window.scrollTo({ top: 0, behavior: "smooth" });
+   }
+
+   function handleBackgroundClick(e) {
+     // If reviews are showing AND click is outside the reviews box
+     if (reviewRef.current && !reviewRef.current.contains(e.target)) {
+       scrollUp();
+     }
+   }
+
     return (
       <div className={style.gameDetails}>
-        <div className={style.topBar}>
-          <div className={style.goBack}>{"<"}</div>
-          <h1 className={style.title}>{thisGame?.["name"]}</h1>
-        </div>
-        <div className={style.container}>
-          {thisGame?.["short_screenshots"] ? <ImageCarousel screenshots={thisGame?.["short_screenshots"]} /> : null}
-          <div className={style.details}>
-            <div className={style.top}></div>
-            <div className={style.bottom}></div>
+        <div onClick={(e)=>handleBackgroundClick(e)} style={backgroundStyle} className={style.detailsContainer}>
+          <div className={style.topBar}>
+            <div className={style.goBack}>{"<"}</div>
+            <h1 className={style.title}>{thisGame?.["name"]}</h1>
+          </div>
+          <div className={style.container}>
+            {thisGame?.["short_screenshots"] ? (
+              <ImageCarousel screenshots={thisGame?.["short_screenshots"]} />
+            ) : null}
+            <div className={style.details}>
+              <div className={style.top}></div>
+              <div className={style.bottom}></div>
+            </div>
           </div>
         </div>
+
+        <div ref={reviewRef} className={style.reviewAnchor}>
+          <Reviews
+          // fetchedGame?.["metacritic_platforms"]||
+          //fetchedGame?.["reddit_url"]||
+          // fetchedGame?.["ratings"]||
+            metacriticPlatforms={dummyMetaCritic}
+            redditUrl={dummyRedditUrl}
+            ratings={ratings}
+            progress={progress}
+            fixed={fixed}
+          />
+        </div>
+
+        <div style={{ height: "70vh" }} />
       </div>
     );
 }
