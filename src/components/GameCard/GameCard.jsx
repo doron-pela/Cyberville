@@ -70,7 +70,7 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
         //When we hover the card and the game Data's movie_count>0, this game has a video. Hence, we enable our query fn to with fetch
         <div onClick={()=>handleClick(gameData)} className={`${style["game-card"]}`}> 
             {
-              vFetchEnabled&&videoData?.['count']>0&&videoIsEnded===false? <Video src={videoData?.["results"][0]['data']["max"]} muted={true} handleVideoEnd={handleIsEnded}/>
+              vFetchEnabled&&videoData?.['count']>0&&videoIsEnded===false? <Video src={videoData?.["results"][1]['data']["max"]} muted={true} handleVideoEnd={handleIsEnded}/>
               : 
               <div className={`${style["image-container"]} ${inShop? style["inShop"] : ""}`} ref={containerRef}
                     onMouseEnter={()=>handleHover()} 

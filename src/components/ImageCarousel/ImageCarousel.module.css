@@ -50,6 +50,7 @@
     display: flex;
     position: relative;
     height: 100%;
+    width: 100%;
     transition: transform .7s ease;
     cursor: grab;
 
@@ -62,4 +63,14 @@
         width: 100%;
         height: 100%;
     }
+}
+
+@media (max-width: 900px){
+    .carouselWindow{
+        width: 100%;
+        max-width: 650px;
+        min-height: 40vh;
+        margin: 0 auto;
+    }
+    
 }

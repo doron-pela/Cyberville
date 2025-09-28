@@ -20,3 +20,10 @@ export const getVideosForGame = async (gameId) => {
 };
 
 
+export const getScreenshotsForGame = async (gameId) => {
+  const results = await axios.get(
+    `${baseUrl}${games}/${gameId}/screenshots?&key=${clientSecret}`
+  );
+  return results.data;
+};
+

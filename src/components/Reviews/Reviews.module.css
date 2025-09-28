@@ -104,6 +104,7 @@
 @media (min-width: 800px){
     .reviewContainer{
       margin-right: 10%;
+      width: min-content;
     }
 }
 /* 

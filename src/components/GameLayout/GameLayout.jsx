@@ -1,8 +1,9 @@
 import {useEffect, useState, useContext, useRef} from 'react'
-import { useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { useGameForId } from "../../Hooks/useGames";
 import { GameContext } from '../../contexts/contexts.js';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.jsx'
+import backIcon from "../../assets/back-pain-svgrepo-com.svg";
 import Reviews from '../Reviews/Reviews.jsx'
 import style from './GameLayout.module.css'
 
@@ -15,6 +16,8 @@ export default function GameLayout(){
     const reviewRef = useRef(null);
     const [progress, setProgress] = useState(0);
     const [fixed, setFixed] = useState(false);
+
+    const navigate = useNavigate()
 
     useEffect(() => {
       window.scrollTo(0, 0);
@@ -159,6 +162,10 @@ export default function GameLayout(){
     const backgroundStyle = {
       filter: `blur(${progress * 10}px)`,
     };
+
+    function handleBack(){
+      navigate('/shop');
+    }
             
    function scrollUp() {
      window.scrollTo({ top: 0, behavior: "smooth" });
@@ -175,17 +182,50 @@ export default function GameLayout(){
       <div className={style.gameDetails}>
         <div onClick={(e)=>handleBackgroundClick(e)} style={backgroundStyle} className={style.detailsContainer}>
           <div className={style.topBar}>
-            <div className={style.goBack}>{"<"}</div>
+            <div onClick={()=>handleBack()} className={style.goBack}>
+              <img src={backIcon} />
+            </div>
             <h1 className={style.title}>{thisGame?.["name"]}</h1>
           </div>
-          <div className={style.container}>
+          <div className={style.lowerContainer}>
             {thisGame?.["short_screenshots"] ? (
               <ImageCarousel screenshots={thisGame?.["short_screenshots"]} />
             ) : null}
+
             <div className={style.details}>
-              <div className={style.top}></div>
-              <div className={style.bottom}></div>
+              <div className={style.top}>
+                <p>uerhgoerihfioerhir4hvuiprhv eroviuh ervherv ervheriuv erverhv rh vrehv iuervhiuer veirh veriuvereverivuh ev eruvier ver eruvier
+                  voeuhr vuerh viuerh vehrvuierhvuireh vuieg eh vuierhvuhruvheriuv hehv erhviuer ver veuvh feuvh fiuvh feiuvh eiuhv fevi efvh efiuvh euiv efverv
+                  erv eihv iuerv iuergv iurevh eruivge ruigveuivh eiurgveriuvh efiugv riv eruvierverv e ervrev erv er
+                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
+                  his tbeing said.
+                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
+                  his tbeing said.
+                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
+                  his tbeing said.r vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh er vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh eeihv iuerv iuergv iurevh eruivge ruigveuivh eiurgveriuvh efiugv riv eruvierverv e ervrev erv er
+                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
+                  his tbeing said.
+                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
+                  his tbeing said.
+                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
+                  his tbeing said.r vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh er vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
+                  ervui erivileruvh e
+                </p>
+              </div>
+              <div className={style.bottom}>
+
+              </div>
             </div>
+
           </div>
         </div>
 

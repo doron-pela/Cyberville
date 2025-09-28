@@ -32,59 +32,56 @@ video::-webkit-media-controls{
 }
 
 
-.hero-right{
-	position: relative;
+.btn{
+	width:fit-content;
 	height: fit-content;
+	cursor:pointer;
+	border: 0px;
+	color: white;
+	position:absolute;
+	bottom: 5rem;
+	right: 9.5%;
+	padding:10px 20px;
+	background:black;
+	font-size:28px;
+	border-top-right-radius:10px;
+	border-bottom-left-radius:10px;
+	transition:all 1s;
+	
 
-	& .btn{
-		width:fit-content;
-		height: fit-content;
-		cursor:pointer;
-		border: 0px;
-		color: white;
+	&:after,&:before{
+		content:" ";
+		width:10px;
+		height:10px;
 		position:absolute;
-		bottom: 5rem;
-		right: 1em;
-		padding:10px 20px;
-		background:black;
-		font-size:28px;
-		border-top-right-radius:10px;
-		border-bottom-left-radius:10px;
+		border :0px solid #fff;
 		transition:all 1s;
-
-		&:after,&:before{
-			content:" ";
-			width:10px;
-			height:10px;
-			position:absolute;
-			border :0px solid #fff;
-			transition:all 1s;
-			}
-		&:after{
-			top:-1px;
-			left:-1px;
-			border-top:5px solid white;
-			border-left:5px solid white;
 		}
-		&:before{
-			bottom:-1px;
-			right:-1px;
-			border-bottom:5px solid white;
-			border-right:5px solid white;
-		}
-		&:hover{
-			-webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
-			border-top-right-radius:0px;
-			border-bottom-left-radius:0px;
-			transform: translateX(-10%);
+	&:after{
+		top:-1px;
+		left:-1px;
+		border-top:5px solid white;
+		border-left:5px solid white;
+	}
+	&:before{
+		bottom:-1px;
+		right:-1px;
+		border-bottom:5px solid white;
+		border-right:5px solid white;
+	}
+	&:hover{
+		-webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+		border-top-right-radius:0px;
+		border-bottom-left-radius:0px;
+		transform: translateX(-10%);
 
-			&:before,&:after{
-				width:100%;
-				height:100%;
-			}
+		&:before,&:after{
+			width:100%;
+			height:100%;
 		}
 	}
 }
+
 
 .hero-left.welcomed{
 	transform: translateX(0);
@@ -93,10 +90,10 @@ video::-webkit-media-controls{
 
 .hero-left{
     position: absolute;
-    width: fit-content;
+    width: max-content;
     height: fit-content;
-    top: 30%;
-    left: 5%;
+    top: 26%;
+    left: 7%;
     color: white;
     z-index: 2;
 	transform: translateX(-100%);
@@ -108,23 +105,26 @@ video::-webkit-media-controls{
     & h1{
         font-size: 4.5em;
         margin-bottom: 1rem;
-        width: fit-content;
+		line-height: 1.8;
         color: white;
         height: fit-content;
     }
     & p{
-        height: fit-content; 
-        line-height: 1.2;
-        max-width: 400px;
+        height: max-content; 
+        line-height: 1.5;
+        max-width: 500px;
+		font-size: 11.3pt;
     }
 
 	& button.pulse{
 		width: fit-content;
+		position: relative;
+		top: .5em;
 		border-radius: 8px;
 		border-top-right-radius: 0;
 		border-bottom-left-radius: 0;
 		border: none;
-		margin-top: 2em;
+		margin-top: 3em;
 		text-wrap: nowrap;
 		padding: 1em;
 		background-color: black;
@@ -146,14 +146,69 @@ video::-webkit-media-controls{
 		}
 
 	}
+
+	& .btn{
+
+		&.shop{
+			& p{
+				color: black;
+			}
+			width: max-content;
+			position: absolute;
+			bottom: -.25em;
+			right: 7em;
+			cursor:pointer;
+			border: 0px;
+			padding:10px 20px;
+			background:white;
+			font-size:28px;
+			border-top-right-radius:10px;
+			border-bottom-left-radius:10px;
+			transition:all 1s;
+			
+
+			&:after,&:before{
+				content:" ";
+				width:10px;
+				height:10px;
+				position:absolute;
+				border :0px solid black;
+				transition:all 1s;
+				}
+			&:after{
+				top:-1px;
+				left:-1px;
+				border-top:5px solid black;
+				border-left:5px solid black;
+			}
+			&:before{
+				bottom:-1px;
+				right:-1px;
+				border-bottom:5px solid black;
+				border-right:5px solid black;
+			}
+			&:hover{
+				-webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+				border-top-right-radius:0px;
+				border-bottom-left-radius:0px;
+				transform: translateX(-10%);
+
+				&:before,&:after{
+					width:100%;
+					height:100%;
+				}
+			}
+		}
+	}
+
 }
 
 .arrows{
 	display: flex ;
 	position: absolute;
 	width: 15rem;
-	right: 0;
-	bottom: 13rem;
+	right: 7%;
+	bottom: 10rem;
 	z-index: 1;
 
 	& .arrow{
@@ -170,6 +225,10 @@ video::-webkit-media-controls{
 		&:hover{
 			transform: scale(1.4);
 			transition: transform .5s ease;
+		}
+
+		&:active{
+			transform: scale(.8);
 		}
 	}
 
@@ -194,6 +253,7 @@ video::-webkit-media-controls{
 
 @media (max-width: 500px){
 	.hero-left{
+		top: 20%;
 		& p{
 			margin-top: 2em;
 			font-size: 1em;
@@ -204,4 +264,21 @@ video::-webkit-media-controls{
 		}
 	}
 
+	.btn{
+
+		&.shop{
+			position: absolute;
+			left: .2em;
+			top: 110%;
+
+			& p{
+				margin: 0;
+				font-size: 11pt;
+			}
+		}
+	}
+
+	.arrows{
+		width: 10rem;
+	}
 }

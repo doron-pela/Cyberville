@@ -1,6 +1,6 @@
 import { getGamesForGenre, getGamesForDates, getGamesForMonth, getGamesForPlatform, getGamesForTag, getGamesForSearch, getGameForId } from "../services/Games.js";
 import { pastWeekRange, nextWeekRange } from "../utils/dateModule.js";
-import { getGameWithVideo, getVideosForGame } from "../services/Movies.js";
+import { getGameWithVideo, getVideosForGame, getScreenshotsForGame } from "../services/Movies.js";
 // import { getPlatforms } from '../utils/Platforms.js'
 import {QueryKeys} from '../utils/QueryKeys.js';
 import {useInfiniteQuery, useQuery} from '@tanstack/react-query'
@@ -57,6 +57,15 @@ export function useVideosForGame(gameId, enabled) {
     queryKey: ["videosForGame", gameId],
     queryFn: () => getVideosForGame(gameId),
     enabled,
+    staleTime: Infinity,
+    cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
+  });
+}
+
+export function useScreenshotsForGame(gameId) {
+  return useQuery({
+    queryKey: ["screenshotsForGame", gameId],
+    queryFn: () => getScreenshotsForGame(gameId),
     staleTime: Infinity,
     cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
   });
