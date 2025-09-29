@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import style from './Hero.module.css';
 import mutedIcon from "../../assets/audio-volume-muted-symbolic-svgrepo-com.svg";
 import unmutedIcon from "../../assets/unmute-svgrepo-com.svg";
+import githubIcon from "../../assets/github-svgrepo-com.svg";
 import nextArrow from "../../assets/arrow-next-small-svgrepo-com.svg";
 import prevArrow from "../../assets/arrow-prev-small-svgrepo-com.svg";
 import YouTube  from "react-youtube";
@@ -62,6 +63,8 @@ export default function Hero({welcomed, setWelcomed}) {
   console.log("blackMythWukongObj is:", blackMythWukongObj);
   console.log("deadIslandObj is: ", deadIslandObj);
 
+
+
   const gameList = [blackMythWukongObj, deadIslandObj];
 
   function unMute(e) {
@@ -111,18 +114,26 @@ export default function Hero({welcomed, setWelcomed}) {
         ]}
       >
         <h1> Cyberville </h1>
-        <p>
-          Your gateway to the ultimate gameverse. Discover, buy, and play the
-          newest games the moment they drop, all in one city of pixels.
+        <p className={[`${style["byLine"]}`]}>
+          Your gateway to the ultimate gameverse. Discover, explore, and
+          catalogue the newest games the moment they drop, all in one city of
+          pixels.
         </p>
 
-        <button onClick={() => navigate(`/shop`)} className={`${style.btn} ${style["shop"]}`}>
-          <p>To The Shop</p>
-        </button>
+        <div className={style["buttons"]}>
+          <button onClick={() => navigate(`/shop`)} className={`${style.btn} ${style["shop"]}`}>
+            <p>To The Shop</p>
+          </button>
 
-        <button onClick={() => clearSiteCache()} className={style["pulse"]}>
-          Clear Site cache
-        </button>
+          <button onClick={() => clearSiteCache()} className={style["pulse"]}>
+            Clear Site cache
+          </button>
+          
+          <a href={"https://github.com/doron-pela/"} target={"_blank"} className={[`${style["author"]}`]}>
+            <span><img src={githubIcon} alt="github Icon" />By Doron Pela</span>
+          </a>
+        </div>
+
       </aside>
 
       <div className={style["arrows"]}>

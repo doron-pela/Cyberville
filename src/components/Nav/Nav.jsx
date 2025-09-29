@@ -17,6 +17,7 @@ export default function Nav(){
             <img src={logo} alt="Cyberville_icon" />
           </div>
           <h1 className={style.logoTitle}>Cyberville</h1>
+          <h2 className={style.credit}>Provisioned by RAWG API</h2>
         </Link>
 
         {inShop && <SearchBar />}

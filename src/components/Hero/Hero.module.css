@@ -116,9 +116,20 @@ video::-webkit-media-controls{
 		font-size: 11.3pt;
     }
 
+	& .buttons{
+		display: flex;
+		/* justify-content: space-between; */
+		gap: 32%;
+		align-items: baseline;
+		& *{
+			font-weight: 600;
+		}
+	}
+
 	& button.pulse{
 		width: fit-content;
-		position: relative;
+		height: fit-content;
+		/* position: relative; */
 		top: .5em;
 		border-radius: 8px;
 		border-top-right-radius: 0;
@@ -154,9 +165,9 @@ video::-webkit-media-controls{
 				color: black;
 			}
 			width: max-content;
-			position: absolute;
-			bottom: -.25em;
-			right: 7em;
+			/* position: absolute; */
+			bottom: 0;
+			right: 8em;
 			cursor:pointer;
 			border: 0px;
 			padding:10px 20px;
@@ -201,6 +212,29 @@ video::-webkit-media-controls{
 		}
 	}
 
+}
+
+.author{
+    /* height: fit-content; */
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	padding: .7em;
+	padding-left: 0;
+	border: none;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	margin-right: .5em;
+
+	& img{
+		height: 1.5rem;
+		background: white;
+		border-radius: 50%;
+		margin-bottom: -.4em;
+		margin-right: .4em;
+		margin-left: .8em;
+	}
 }
 
 .arrows{
@@ -255,12 +289,20 @@ video::-webkit-media-controls{
 	.hero-left{
 		top: 20%;
 		& p{
-			margin-top: 2em;
 			font-size: 1em;
 			max-width: 250px;
 		}
 		& h1{
 			font-size: 3.5em;
+		}
+
+		.buttons{
+			flex-direction: column;
+			gap: 2em;
+
+			& .author{
+				/* margin-top: 2em; */
+			}
 		}
 	}
 
