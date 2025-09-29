@@ -41,6 +41,10 @@ nav{
         background: transparent;
     }
 
+    & .home{
+        width: 1.7rem;
+    }
+
     & img{
         width: 2rem;
         aspect-ratio: 1/1;

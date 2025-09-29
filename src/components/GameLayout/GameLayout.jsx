@@ -3,9 +3,12 @@ import { useNavigate, useParams} from "react-router-dom";
 import { useGameForId } from "../../Hooks/useGames";
 import { GameContext } from '../../contexts/contexts.js';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.jsx'
-import backIcon from "../../assets/back-pain-svgrepo-com.svg";
+import backIcon from "../../assets/go-back-svgrepo-com.svg";
 import Reviews from '../Reviews/Reviews.jsx'
 import style from './GameLayout.module.css'
+
+import {AnimatePresence, motion} from 'motion/react';
+import { pageVariants } from "../../utils/pageVariants.js"
 
 export default function GameLayout(){
     const {gameId} = useParams();
@@ -72,7 +75,7 @@ export default function GameLayout(){
     }, [gameId])
 
 
-    //Used localStorage caching and context here for 
+    ////Uncomment this block to use cached fetch 
     // const {data: fetchedGame} = useGameForId(gameId);
 
     const dummyRedditUrl = "https://www.reddit.com/r/GrandTheftAutoV/";
@@ -179,7 +182,7 @@ export default function GameLayout(){
    }
 
     return (
-      <div className={style.gameDetails}>
+      <motion.div className={style.gameDetails} variants={pageVariants} initial={"initial"} animate={"animate"} exit={"exit"} key={gameId}>
         <div onClick={(e)=>handleBackgroundClick(e)} style={backgroundStyle} className={style.detailsContainer}>
           <div className={style.topBar}>
             <div onClick={()=>handleBack()} className={style.goBack}>
@@ -194,6 +197,7 @@ export default function GameLayout(){
 
             <div className={style.details}>
               <div className={style.top}>
+                <h2>Title of game</h2>
                 <p>uerhgoerihfioerhir4hvuiprhv eroviuh ervherv ervheriuv erverhv rh vrehv iuervhiuer veirh veriuvereverivuh ev eruvier ver eruvier
                   voeuhr vuerh viuerh vehrvuierhvuireh vuieg eh vuierhvuhruvheriuv hehv erhviuer ver veuvh feuvh fiuvh feiuvh eiuhv fevi efvh efiuvh euiv efverv
                   erv eihv iuerv iuergv iurevh eruivge ruigveuivh eiurgveriuvh efiugv riv eruvierverv e ervrev erv er
@@ -203,22 +207,6 @@ export default function GameLayout(){
                   ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
                   ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
                   his tbeing said.
-                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
-                  his tbeing said.r vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh er vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh eeihv iuerv iuergv iurevh eruivge ruigveuivh eiurgveriuvh efiugv riv eruvierverv e ervrev erv er
-                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
-                  his tbeing said.
-                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
-                  his tbeing said.
-                  ver vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh erigvhrehgtehtehrjejhew wejdjoesjnt enr jb eklb wvefmenhave teo o be omrbtijng else in porderofornteh rest orot upiclk kup ton ehat
-                  his tbeing said.r vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh er vherv uerihv ieruh viuerh vuerh ivurheiuhefiuheiuvger vergvevuerhveriu vheiuhvieufvheiruviurhvisheriuvgeiluvheiuveg iuvh eriov erh virue viuerh vuiegveiuhv eiuv herugver 
-                  ervui erivileruvh e
                 </p>
               </div>
               <div className={style.bottom}>
@@ -243,6 +231,6 @@ export default function GameLayout(){
         </div>
 
         <div style={{ height: "70vh" }} />
-      </div>
+      </motion.div>
     );
 }

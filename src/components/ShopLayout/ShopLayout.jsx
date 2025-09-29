@@ -8,6 +8,10 @@ import { monthStrings } from "../../utils/dateModule.js";
 import { QueryKeys } from '../../utils/QueryKeys.js';
 
 
+import {motion} from 'motion/react';
+import {pageVariants} from '../../utils/pageVariants.js'
+
+
 export default function ShopLayout() {
   const [isHidden, setIsHidden] = useState(true);
   const [selected, setSelected] = useState({key:'release dates', index: 2});
@@ -32,7 +36,7 @@ export default function ShopLayout() {
   const data = JSON.parse(localStorage.getItem("data"));
 
   return (
-    <main className={styles.container}>
+    <motion.main className={styles.container} variants={pageVariants} initial={"shopInitial"} animate={"animate"} exit={"exit"} key={'/shop'}>
       <section onClick={()=>setIsHidden(true)} className={`${styles.content} ${!isHidden ? "" : styles.contentExpand}`}>
         <h1 className={styles.title}>{onPlatformOption? QueryKeys[selected.key][selected.index][1] 
                                       : onCalendarOption? QueryKeys[selected.key][selected.index][0] : QueryKeys[selected.key][selected.index]}
@@ -52,6 +56,6 @@ export default function ShopLayout() {
       </section>
 
       <SideBar selected={selected} setSelected={setSelected} isHidden={isHidden} setIsHidden={setIsHidden} />
-    </main>
+    </motion.main>
   );
 }

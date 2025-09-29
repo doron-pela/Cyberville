@@ -4,6 +4,7 @@ import Welcome from './components/Welcome/Welcome.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import Hero from './components/Hero/Hero.jsx';
 import GameContextProvider from './contexts/GameContext.jsx';
+import { AnimatePresence } from 'motion/react';
 
 function App() {
 
@@ -13,7 +14,9 @@ function App() {
     <>
       <Nav />
       <GameContextProvider>
-        <Outlet context={{ welcomed, setWelcomed }} />
+        <AnimatePresence>
+          <Outlet context={{ welcomed, setWelcomed }} />
+        </AnimatePresence>
       </GameContextProvider>
     </>
   );

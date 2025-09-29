@@ -1,5 +1,6 @@
 import {Link, useMatch} from 'react-router-dom';
 import logo from "../../assets/cyberville_icon.png";
+import home from '../../assets/home-icon-svgrepo-com.svg';
 import cartIcon from "../../assets/cart-large-minimalistic-svgrepo-com.svg";
 import style from './Nav.module.css';
 import SearchBar from '../SearchBar/SearchBar.jsx';
@@ -21,6 +22,7 @@ export default function Nav(){
         {inShop && <SearchBar />}
 
         <div className={style.rightNav}>
+          <Link to={"/"}><img src={home} alt="home-icon" className={style.home} /></Link>
           <Link to={"/shop"}>Shop</Link>
           <button>{cartIcon && <img src={cartIcon} alt="cart-icon" />}</button>
         </div>
