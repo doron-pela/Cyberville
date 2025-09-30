@@ -20,7 +20,7 @@ export default function Nav(){
           <h2 className={style.credit}>Provisioned by RAWG API</h2>
         </Link>
 
-        {inShop && <SearchBar />}
+        {inShop && <SearchBar/>}
 
         <div className={style.rightNav}>
           <Link to={"/"}><img src={home} alt="home-icon" className={style.home} /></Link>

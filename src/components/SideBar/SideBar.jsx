@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useContext} from 'react'
 import { MdCategory } from "react-icons/md";
 import { BiMenu, BiSolidCog, BiPowerOff } from "react-icons/bi";
 import { CiCalendarDate } from "react-icons/ci";
@@ -8,12 +8,14 @@ import { platformIcons, genreIcons } from "../../utils/sidebarIcons.jsx";
 
 import styles from './SideBar.module.css'
 import {QueryKeys} from '../../utils/QueryKeys.js'
+import { SearchContext } from '../../contexts/contexts.js';
 // import { genreStrings } from '../../utils/Genres.js';
 // import { dates } from "../../utils/Dates.js";
 // import {Platforms} from '../../utils/Platforms.js'
 // import { Tags } from "../../utils/Tags.js";
 
 export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
+    const {setSearchEnabled, setSearchTerm} = useContext(SearchContext)
     useEffect(() => {
         function adjustSidebar() {
           if (window.innerWidth <= 576) {
@@ -50,7 +52,13 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                             const string = platform[1];
                             const Icon = platformIcons[string];
                             return (
-                            <li className={platform===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>setSelected({key: 'platforms', index: i})} key={platform}>
+                            <li className={platform===QueryKeys[selected.key][selected.index]? styles.selected: null} 
+                            onClick={()=>{
+                                setSelected({key: 'platforms', index: i})
+                                setSearchEnabled(false)
+                                setSearchTerm("")
+                                }} 
+                                key={platform}>
                                 <a className={styles.subTextWrapper} href="#">
                                 <span className={styles.subText}>
                                     {Icon && <Icon className={styles.icon} size={iconSize}/>}
@@ -74,7 +82,12 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                     :
                         QueryKeys['release dates'].map((timeline, i)=>{
                             return (
-                            <li className={timeline===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>setSelected({key: 'release dates', index: i})} key={timeline}>
+                            <li className={timeline===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>{
+                                setSelected({key: 'release dates', index: i})
+                                setSearchEnabled(false)
+                                setSearchTerm("")
+                                }} 
+                                key={timeline}>
                                 <a className={styles.subTextWrapper}href="#">
                                 <span className={styles.subText}>{i===2? timeline[0] :timeline}</span>
                                 </a>
@@ -96,7 +109,12 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                         QueryKeys.genres.map((genre, i)=>{
                             const Icon = genreIcons[i].icon;
                             return (
-                            <li className={genre===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>setSelected({key: 'genres', index: i})} key={genre}>
+                            <li className={genre===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>{
+                                setSelected({key: 'genres', index: i})
+                                setSearchEnabled(false);
+                                setSearchTerm("");
+                                }} 
+                                key={genre}>
                                 <a className={styles.subTextWrapper} href="#">
                                 <span className={styles.subText}>{genreIcons[i] && <Icon className={styles.icon} size={iconSize}/>}{genre}</span>
                                 </a>
@@ -117,7 +135,12 @@ export default function SideBar({isHidden, setIsHidden, selected, setSelected}){
                     :
                         QueryKeys.tags.map((tag, i)=>{
                         return (
-                            <li className={tag===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>setSelected({key: 'tags', index: i})} key={tag}>
+                            <li className={tag===QueryKeys[selected.key][selected.index]? styles.selected: null} onClick={()=>{
+                                setSelected({key: 'tags', index: i})
+                                setSearchEnabled(false);
+                                setSearchTerm("");
+                                }} 
+                                key={tag}>
                             <a className={styles.subTextWrapper} href="#">
                             <span className={styles.subText}>{tag}</span>
                             </a>

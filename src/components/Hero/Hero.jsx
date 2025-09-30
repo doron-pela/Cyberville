@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect} from "react";
+import { useState, useContext} from "react";
 import {useScreenshotsForGame, useGameForId} from '../../Hooks/useGames.js'
 import ReactPlayer from "react-player";
 import style from './Hero.module.css';
@@ -12,6 +12,8 @@ import YouTube  from "react-youtube";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../contexts/contexts.js";
 
+import {useQueryClient} from '@tanstack/react-query'
+
 import Video from "../Video/Video.jsx";
 
 export default function Hero({welcomed, setWelcomed}) {
@@ -19,6 +21,7 @@ export default function Hero({welcomed, setWelcomed}) {
   const [muted, setMuted] = useState(true);
   const navigate = useNavigate();
   const { setGameFromCollection } = useContext(GameContext);
+  const queryClient = useQueryClient();
 
   const videos = [
     {
@@ -76,6 +79,7 @@ export default function Hero({welcomed, setWelcomed}) {
 
   function clearSiteCache() {
     localStorage.clear();
+    queryClient.clear(); //Clear all the cached queries. All queries now refetch and recache. Since I set Cache time to infinity on all queries, this is a good reset button for memory management.
     setWelcomed(true);
   }
 

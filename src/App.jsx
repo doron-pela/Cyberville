@@ -4,6 +4,7 @@ import Welcome from './components/Welcome/Welcome.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import Hero from './components/Hero/Hero.jsx';
 import GameContextProvider from './contexts/GameContext.jsx';
+import SearchContextProvider from "./contexts/SearchContextProvider.jsx";
 import { AnimatePresence } from 'motion/react';
 
 function App() {
@@ -12,12 +13,14 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <GameContextProvider>
-        <AnimatePresence>
-          <Outlet context={{ welcomed, setWelcomed }} />
-        </AnimatePresence>
-      </GameContextProvider>
+      <SearchContextProvider>
+        <Nav />
+        <GameContextProvider>
+          <AnimatePresence>
+            <Outlet context={{ welcomed, setWelcomed }} />
+          </AnimatePresence>
+        </GameContextProvider>
+      </SearchContextProvider>
     </>
   );
 }

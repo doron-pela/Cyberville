@@ -30,7 +30,8 @@ export function useGames({key, index}, monthIndex){
       }                                      // tanstack query's "nextPage" is is whatever we return here in getNextPageParam
       return undefined;
     },
-    staleTime: 1000 * 60 * 60,
+    staleTime: Infinity,
+    cacheTime: Infinity,
   });
 }
 
@@ -73,10 +74,18 @@ export function useScreenshotsForGame(gameId) {
 
 
 export function useGameSearch(searchTerm, enabled) {
-  return useQuery({
+
+  return useInfiniteQuery({
     queryKey: ["searchTerm", searchTerm],
-    queryFn: () => getGamesForSearch(searchTerm),
-    enabled,
+    queryFn: ({ pageParam=1 }) => getGamesForSearch(searchTerm, pageParam),
+    enabled: enabled && !!searchTerm,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.next) {
+        const url = new URL(lastPage.next);
+        return url.searchParams.get("page");
+      }
+      return undefined;
+    },
     staleTime: Infinity,
     cacheTime: Infinity, // keep it in cache for 5 mins (or Infinity)
   });

@@ -12,8 +12,8 @@ export const getGameForId = async (gameId)=> {
     return results.data;
 }
 
-export const getGamesForSearch = async (searchTerm) =>{
-    const results = await axios.get(`${baseUrl}${games}?search=${searchTerm}&key=${clientSecret}`);
+export const getGamesForSearch = async (searchTerm, page=1) =>{
+    const results = await axios.get(`${baseUrl}${games}?search=${searchTerm}&page_size=${page_size}&page=${page}&key=${clientSecret}`);
     return results.data;
 }
 
