@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from '../pages/HomePage.jsx';
-import ShopPage from '../Pages/ShopPage.jsx';
-import GamePage from '../Pages/GamePage.jsx';
+import ShopPage from '../pages/ShopPage.jsx';
+import GamePage from '../pages/GamePage.jsx';
 import App from '../App.jsx';
 
 const routes = createBrowserRouter([
