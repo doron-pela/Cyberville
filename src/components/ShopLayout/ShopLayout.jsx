@@ -7,9 +7,8 @@ import SideBar from '../SideBar/SideBar.jsx';
 import { monthStrings } from "../../utils/dateModule.js";
 import { QueryKeys } from '../../utils/QueryKeys.js';
 
-import { SearchContext } from "../../contexts/contexts.js";
+import { SearchContext} from "../../contexts/contexts.js";
 import { useContext } from "react";
-
 
 import {motion} from 'motion/react';
 import {pageVariants} from '../../utils/pageVariants.js'

@@ -32,3 +32,9 @@
   cursor: pointer;
   padding: .3em; 
 }
+
+@media (max-width: 600px){
+  .search-bar{
+    text-align: left;
+  }
+}

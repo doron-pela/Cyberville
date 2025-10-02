@@ -23,7 +23,7 @@
     position: fixed;
     width: 2.5rem;
     height: 3rem;
-    right: 10rem;
+    right: 9.5rem;
     top: .5rem;
 }
 
@@ -304,6 +304,10 @@ video::-webkit-media-controls{
 				/* margin-top: 2em; */
 			}
 		}
+	}
+
+	.mutedIcon{
+		
 	}
 
 	.btn{

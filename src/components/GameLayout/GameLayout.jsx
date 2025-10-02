@@ -1,9 +1,10 @@
 import {useEffect, useState, useContext, useRef} from 'react'
 import { useNavigate, useParams} from "react-router-dom";
 import { useGameForId } from "../../Hooks/useGames";
-import { GameContext } from '../../contexts/contexts.js';
+import { CartContext, GameContext } from '../../contexts/contexts.js';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.jsx'
 import backIcon from "../../assets/go-back-svgrepo-com.svg";
+import checkMark from '../../assets/checkmark-circle-svgrepo-com.svg'
 import scrollUpIcon from "../../assets/scroll-up-svgrepo-com.svg"
 import addIcon from "../../assets/add-to-queue-svgrepo-com.svg"
 import Reviews from '../Reviews/Reviews.jsx'
@@ -17,6 +18,7 @@ import {stringParse} from '../../utils/stringParse.js'
 export default function GameLayout(){
     const {gameId} = useParams();
     const [cached, setCached] = useState(null);
+    const {addToCart, isInCart, removeFromCart} = useContext(CartContext)
     const {gameFromCollection, setGameFromCollection} = useContext(GameContext);
     const thisGame = cached || gameFromCollection;                  //We will either use the game in the global context, or the game in the cache. 
 
@@ -465,9 +467,17 @@ export default function GameLayout(){
                 <div className={style.scrollUpContainer}>
                   <img src={scrollUpIcon} className={style.scrollUpIcon} alt="scroll up icon" /><span>Scroll up for ratings</span>
                 </div>
-                <div className={style.wishListContainer}>
-                  <span>Add To Wishlist</span><img src={addIcon} className={style.addIcon} alt="scroll up icon" />
-                </div>
+                {isInCart(thisGame)?
+                <motion.span 
+                      initial={{scale : .2}}
+                      animate={{scale : 1}}
+                      className={style.savedContainer}
+                      >Saved <img src={checkMark}/>
+                </motion.span>
+                :
+                <div onClick={()=>addToCart(thisGame)} className={style.wishListContainer}>
+                  <span>Save To Wishlist</span><img src={addIcon} className={style.addIcon} alt="scroll up icon" />
+                </div>}
               </div>
             </div>
 

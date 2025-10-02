@@ -60,7 +60,7 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
         })
     }   
 
-    function handleClick(game){
+    function toGamePage(game){
       setGameFromCollection(game); //Sets our current game data in our outletProvider's parent component's state. The context now becomes available to all child components
       localStorage.setItem(`${gameData["id"]}`, JSON.stringify(gameData)); //uniquely caches this game's Data with its key as "id"
       navigate(`/${game['id']}`);
@@ -68,11 +68,11 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
 
     return( 
         //When we hover the card and the game Data's movie_count>0, this game has a video. Hence, we enable our query fn to with fetch
-        <div onClick={()=>handleClick(gameData)} className={`${style["game-card"]}`}> 
+        <div className={`${style["game-card"]}`}> 
             {
               vFetchEnabled&&videoData?.['count']>0&&videoIsEnded===false? <Video src={videoData?.["results"][1]['data']["max"]} muted={true} handleVideoEnd={handleIsEnded}/>
               : 
-              <div className={`${style["image-container"]} ${inShop? style["inShop"] : ""}`} ref={containerRef}
+              <div onClick={()=>toGamePage(gameData)} className={`${style["image-container"]} ${inShop? style["inShop"] : ""}`} ref={containerRef}
                     onMouseEnter={()=>handleHover()} 
                     onMouseMove={(e)=>showCarousel(e)} 
                     onMouseOut={()=>handleMouseLeave()}
@@ -104,7 +104,7 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
                       (<img className={style['cover-image']} src={backgroundImage} alt="No Images for this game yet" />)}
               </div>
             }
-            {inShop && <CardData gameData={gameData}/>}
+            {inShop && <CardData toGamePage={toGamePage} gameData={gameData}/>}
         </div>
     )
 }

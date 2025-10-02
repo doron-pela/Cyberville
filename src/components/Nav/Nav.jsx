@@ -1,12 +1,15 @@
+import { useContext } from 'react';
 import {Link, useMatch} from 'react-router-dom';
 import logo from "../../assets/cyberville_icon.png";
 import home from '../../assets/home-icon-svgrepo-com.svg';
 import cartIcon from "../../assets/cart-large-minimalistic-svgrepo-com.svg";
 import style from './Nav.module.css';
 import SearchBar from '../SearchBar/SearchBar.jsx';
+import { CartContext } from '../../contexts/contexts.js';
 
 export default function Nav(){
    
+    const {openCart} = useContext(CartContext)
     // const inHome = useMatch('/');
     const inShop = useMatch('/shop');
 
@@ -25,7 +28,7 @@ export default function Nav(){
         <div className={style.rightNav}>
           <Link to={"/"}><img src={home} alt="home-icon" className={style.home} /></Link>
           <Link to={"/shop"}>Shop</Link>
-          <button>{cartIcon && <img src={cartIcon} alt="cart-icon" />}</button>
+          <button>{cartIcon && <img onClick={()=>openCart()} src={cartIcon} alt="cart-icon" />}</button>
         </div>
       </nav>
     );
