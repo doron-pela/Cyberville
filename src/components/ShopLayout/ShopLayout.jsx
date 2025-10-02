@@ -27,7 +27,7 @@ export default function ShopLayout() {
   const onPlatformOption = selected.key === "platforms";                             //Helper boolean for if we are on our "platforms" key in sidebar
 
   //comment this entire block to use cached fetch
-  // const games = useGames(selected, monthIndex);
+  const games = useGames(selected, monthIndex);
   // if(data){
   //  console.log("grid data is cached");
   //  localStorage.setItem("data", JSON.stringify(data))
@@ -38,13 +38,13 @@ export default function ShopLayout() {
   // console.dir(data);
 
   
-  //uncomment this entire block to use cached fetch
-  const data = JSON.parse(localStorage.getItem("data")); //drill data into gamegrid in development mode
+  // //uncomment this entire block to use cached fetch
+  // const data = JSON.parse(localStorage.getItem("data")); //drill data into gamegrid in development mode
 
 
-  ////comment out this entire block to use cached fetch
-  // const searchResults = useGameSearch(searchTerm, searchEnabled);
-  // const queryToUse = searchTerm && searchEnabled ? searchResults : games ;
+  //comment out this entire block to use cached fetch
+  const searchResults = useGameSearch(searchTerm, searchEnabled);
+  const queryToUse = searchTerm && searchEnabled ? searchResults : games ;
 
   useEffect(()=>{
     const searchFalse = false;
@@ -72,8 +72,8 @@ export default function ShopLayout() {
         }
 
         <GameGrid 
-          data={data} //Comment out below line & uncomment this line to use cached fetch data. 
-        // data={queryToUse?.data} error={queryToUse?.error} isPending={queryToUse?.isPending} fetchNextPage={queryToUse?.fetchNextPage} hasNextPage={queryToUse?.hasNextPage} isFetchingNextPage={queryToUse?.isFetchingNextPage} 
+          // data={data} //Comment out below line & uncomment this line to use cached fetch data. 
+          data={queryToUse?.data} error={queryToUse?.error} isPending={queryToUse?.isPending} fetchNextPage={queryToUse?.fetchNextPage} hasNextPage={queryToUse?.hasNextPage} isFetchingNextPage={queryToUse?.isFetchingNextPage} 
         />
       </section>
 

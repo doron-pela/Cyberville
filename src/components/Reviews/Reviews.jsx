@@ -20,16 +20,18 @@ export default function Reviews({redditUrl, metacriticPlatforms, ratings, progre
     
     return (
         <div className={`${style.reviewContainer}`} style={boxStyle}>
-            <div className={`${style["meta-card"]} ${style["reddit"]}`} >
+            {redditUrl? <div className={`${style["meta-card"]} ${style["reddit"]}`} >
                 <div className={style.redditTitle}><h2> Reddit </h2></div>
                 <a href={redditUrl} target="_blank" rel="noopener noreferrer">{redditUrl}</a>
             </div>
+            : null}
 
             <div className={style.title}><h2> MetaCritic Scores </h2></div>
             {metacriticPlatforms? 
                 metacriticPlatforms?.map((criticism)=>{
+                    const key = crypto.randomUUID();
                 return (
-                <div className={style["meta-card"]}>
+                <div key={key} className={style["meta-card"]}>
                     <div className={style["meta-score"]}>
                         {criticism["metascore"]}
                     </div>
@@ -56,7 +58,7 @@ export default function Reviews({redditUrl, metacriticPlatforms, ratings, progre
             {ratings?
                 ratings?.map((rating)=>{
                 return (
-                <div className={`${style["meta-card"]} ${style["ratings"]}`} >
+                <div key={rating['id']} className={`${style["meta-card"]} ${style["ratings"]}`} >
                     <div className={`${style["meta-score"]} ${style.ratingPercent}`}>
                         {rating["percent"]}{'%'}
                     </div>

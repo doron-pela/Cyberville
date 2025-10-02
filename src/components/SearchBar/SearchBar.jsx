@@ -4,7 +4,7 @@ import {useContext, useState, useEffect} from 'react';
 import { SearchContext } from "../../contexts/contexts.js";
 
 export default function SearchBar() {
-    const {searchTerm, searchEnabled, setSearchTerm, setSearchEnabled} = useContext(SearchContext);
+    const {searchTerm, setSearchTerm, setSearchEnabled} = useContext(SearchContext);
     const [tentativeTerm, setTentativeTerm] = useState(searchTerm);
     useEffect(()=>{
         const cleanedSearch = tentativeTerm.trim();
@@ -19,8 +19,8 @@ export default function SearchBar() {
         }
     }, [tentativeTerm, searchTerm])
 
-    console.log("search term: ", searchTerm)
-    console.log("search enabled: ", searchEnabled)
+    // console.log("search term: ", searchTerm)
+    // console.log("search enabled: ", searchEnabled)
 
     function handleChange(e){
       const currentInput = e.target.value;

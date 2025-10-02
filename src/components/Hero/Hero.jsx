@@ -36,35 +36,35 @@ export default function Hero({welcomed, setWelcomed}) {
     },
   ];
 
-  // //Comment out this entire block to use cached data
-  // const { data: blackMyth } = useGameForId(481913);
-  // const { data: BMScreenshots } = useScreenshotsForGame(481913);
+  //Comment out this entire block to use cached data
+  const { data: blackMyth } = useGameForId(481913);
+  const { data: BMScreenshots } = useScreenshotsForGame(481913);
 
-  // const { data: deadIsland } = useGameForId(28492);
-  // const { data: DIScreenshots } = useScreenshotsForGame(28492);
+  const { data: deadIsland } = useGameForId(28492);
+  const { data: DIScreenshots } = useScreenshotsForGame(28492);
 
   // useEffect(() => {
   //   console.log("Raw BMScreenshots:", BMScreenshots?.results);
   //   console.log("Raw DIScreenshots:", DIScreenshots?.results);
   // }, [BMScreenshots, DIScreenshots]);
 
-  // const screenshots1 = BMScreenshots?.results ?? [];
-  // const screenshots2 = DIScreenshots?.results ?? [];
+  const screenshots1 = BMScreenshots?.results ?? [];
+  const screenshots2 = DIScreenshots?.results ?? [];
 
-  // const blackMythWukongObj = blackMyth? { ...blackMyth, short_screenshots: screenshots1 } : null;
-  // const deadIslandObj = deadIsland? { ...deadIsland, short_screenshots: screenshots2 } : null;
+  const blackMythWukongObj = blackMyth? { ...blackMyth, short_screenshots: screenshots1 } : null;
+  const deadIslandObj = deadIsland? { ...deadIsland, short_screenshots: screenshots2 } : null;
 
-  // localStorage.setItem("blackMythWukongObj", JSON.stringify(blackMythWukongObj));
-  // localStorage.setItem("deadIslandObj", JSON.stringify(deadIslandObj));
+  localStorage.setItem("blackMythWukongObj", JSON.stringify(blackMythWukongObj));
+  localStorage.setItem("deadIslandObj", JSON.stringify(deadIslandObj));
 
 
 
 
   //uncomment this whole block to use cached fetch
-  const blackMythWukongObj = JSON.parse(localStorage.getItem("blackMythWukongObj"));
-  const deadIslandObj = JSON.parse(localStorage.getItem("deadIslandObj"));
-  console.log("blackMythWukongObj is:", blackMythWukongObj);
-  console.log("deadIslandObj is: ", deadIslandObj);
+  // const blackMythWukongObj = JSON.parse(localStorage.getItem("blackMythWukongObj"));
+  // const deadIslandObj = JSON.parse(localStorage.getItem("deadIslandObj"));
+  // console.log("blackMythWukongObj is:", blackMythWukongObj);
+  // console.log("deadIslandObj is: ", deadIslandObj);
 
 
 

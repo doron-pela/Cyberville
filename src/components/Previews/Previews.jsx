@@ -17,28 +17,28 @@ export default function Previews(){
     aos.init({duration: 500});
   },[])
 
-  // //comment this whole block to use cached fetch
-  // //get game1
-  // const {data: gameWithVideoData} = useGameWithVideo(3498); //Returns the video game gta. Comment this out after it runs for the first time to allow localStorage caching.
+  //comment this whole block to use cached fetch
+  //get game1
+  const {data: gameWithVideoData} = useGameWithVideo(3498); //Returns the video game gta. Comment this out after it runs for the first time to allow localStorage caching.
   // localStorage.setItem("gameWithVideoData", JSON.stringify(gameWithVideoData)); 
 
-  //uncomment this whole block to use cached fetch
-  const gameWithVideoData = JSON.parse(localStorage.getItem("gameWithVideoData"));
-  console.log(gameWithVideoData);
+  // //uncomment this whole block to use cached fetch
+  // const gameWithVideoData = JSON.parse(localStorage.getItem("gameWithVideoData"));
+  // console.log(gameWithVideoData);
 
 
 
 
-  // //comment this whole block to use cached fetch
-  // const monthIndex = new Date().getMonth();
-  // const previews = {key: "platforms", index: 1}; //action category at index 0
-  // const { data: previewsData, error, isPending } = useGames(previews, monthIndex);
+  //comment this whole block to use cached fetch
+  const monthIndex = new Date().getMonth();
+  const previews = {key: "platforms", index: 1}; //action category at index 0
+  const { data: previewsData, error, isPending } = useGames(previews, monthIndex);
   // localStorage.setItem("previewsData", JSON.stringify(previewsData));
 
-  //uncomment this whole block to use cached fetch
-  const previewsData = JSON.parse(localStorage.getItem("previewsData"));
-  const isPending = false;
-  const error = false;
+  // //uncomment this whole block to use cached fetch
+  // const previewsData = JSON.parse(localStorage.getItem("previewsData"));
+  // const isPending = false;
+  // const error = false;
 
   if (isPending)
     return (

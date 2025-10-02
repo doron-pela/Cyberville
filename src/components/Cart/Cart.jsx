@@ -7,7 +7,6 @@ import { motion } from 'motion/react';
 export default function Cart(){
 
     const {cart, removeFromCart, clearCart, cartDisplaying, closeCart} = useContext(CartContext);
-    console.log("cart showing :", cartDisplaying)
 
     return (
       cartDisplaying && 
