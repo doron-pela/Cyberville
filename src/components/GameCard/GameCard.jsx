@@ -1,4 +1,4 @@
-import {useState, useRef, useContext, useEffect} from 'react'
+import {useState, useRef, useContext} from 'react'
 import { useVideosForGame } from '../../Hooks/useGames.js'
 import{useMatch, useNavigate} from 'react-router-dom'
 import style from "./GameCard.module.css"
@@ -19,13 +19,13 @@ export default function GameCard({srcCarousel, backgroundImage, gameData=null}) 
     const {setGameFromCollection} = useContext(GameContext);
 
 
-    // //comment this block to use chached fetch
-    // const {data: videoData, isPending: videoDataPending} = useVideosForGame(3498, vFetchEnabled);
+    //comment this block to use chached fetch
+    const {data: videoData, isPending: videoDataPending} = useVideosForGame(3498, vFetchEnabled);
     // videoData? console.log("Video data is cached") && localStorage.setItem("videoData", JSON.stringify(videoData)) : console.log("Could not cache video data");
 
-    //uncomment this block to use cached fetch
-    const videoData = JSON.parse(localStorage.getItem("videoData"));
-    const videoDataPending = false;
+    // //uncomment this block to use cached fetch
+    // const videoData = JSON.parse(localStorage.getItem("videoData"));
+    // const videoDataPending = false;
 
 
 
