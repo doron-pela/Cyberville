@@ -19,7 +19,9 @@ import {pageVariants} from '../../utils/pageVariants.js'
 export default function ShopLayout() {
   const [isHidden, setIsHidden] = useState(true);
   const [selected, setSelected] = useState({key:'release dates', index: 2});
-  const [monthIndex, setMonthIndex] = useState(8);
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const [monthIndex, setMonthIndex] = useState(currentMonth);
 
   const {searchTerm, searchEnabled, setSearchTerm, setSearchEnabled} = useContext(SearchContext);
 
