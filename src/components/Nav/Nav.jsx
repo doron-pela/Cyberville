@@ -12,6 +12,7 @@ export default function Nav(){
     const {openCart} = useContext(CartContext)
     // const inHome = useMatch('/');
     const inShop = useMatch('/shop');
+    const inHome = useMatch('/');
 
     return (
       <nav className={inShop && style.inShop}>
@@ -19,7 +20,7 @@ export default function Nav(){
           <div className={style.imgContainer}>
             <img src={logo} alt="Cyberville_icon" />
           </div>
-          <h1 className={style.logoTitle}>Cyberville</h1>
+          {!inHome && <h1 className={style.logoTitle}>Cyberville</h1>}
           <h2 className={style.credit}>Provisioned by RAWG API</h2>
         </Link>
 
