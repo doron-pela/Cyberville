@@ -88,6 +88,6 @@ a, a:active, a:visited{
 
     .credit{
         font-size: 2pt; 
-        opacity: 0.2; 
+        opacity: 0; 
     }
 }
