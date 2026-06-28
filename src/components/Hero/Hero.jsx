@@ -364,7 +364,7 @@ export default function Hero({ welcomed, setWelcomed }) {
               onClick={() => navigate(`/shop`)}
               className={`${style.btn} ${style["shop"]}`}
             >
-              Explore more!
+              Explore!
             </button>
           </motion.div>
         </motion.div>
