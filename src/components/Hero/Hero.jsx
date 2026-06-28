@@ -81,7 +81,7 @@ export default function Hero({ welcomed, setWelcomed }) {
 
   const byLineLines = [
     "The ultimate gameverse catalogue.",
-    "Discover, explore, and inventorize the newest" ,
+    "Discover, explore, and inventorize the newest",
     "games the moment they drop, all in one city of pixels.",
   ];
 
@@ -94,6 +94,20 @@ export default function Hero({ welcomed, setWelcomed }) {
       transition: {
         duration: titleDuration,
         ease: [0.12, 1, 0.22, 1],
+      },
+    },
+  };
+
+  const titleGlassVariants = {
+    hidden: {
+      "--glass-opacity": 0,
+    },
+    visible: {
+      "--glass-opacity": 1,
+      transition: {
+        delay: titleDuration,
+        duration: 0.9,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
@@ -136,9 +150,17 @@ export default function Hero({ welcomed, setWelcomed }) {
   };
 
   const buttonsVariants = {
-    hidden: {},
+    hidden: {
+      "--buttons-glass-opacity": 0,
+    },
     visible: {
+      "--buttons-glass-opacity": 1,
       transition: {
+        "--buttons-glass-opacity": {
+          delay: titleDuration,
+          duration: 0.9,
+          ease: [0.16, 1, 0.3, 1],
+        },
         delayChildren: buttonsDelay,
         staggerChildren: 0.12,
       },
@@ -271,38 +293,47 @@ export default function Hero({ welcomed, setWelcomed }) {
           `${style["hero-left"]} ${welcomed ? style["welcomed"] : ""}`,
         ]}
       >
-        <motion.h1
-          className={style.title}
-          variants={titleVariants}
+        <motion.div
+          className={style["titleGlass"]}
+          variants={titleGlassVariants}
           initial="hidden"
           animate={welcomed ? "visible" : "hidden"}
+          style={{ "--glass-opacity": 0 }}
         >
-          Cybervylle
-        </motion.h1>
+          <motion.h1
+            className={style.title}
+            variants={titleVariants}
+            initial="hidden"
+            animate={welcomed ? "visible" : "hidden"}
+          >
+            Cybervylle
+          </motion.h1>
 
-        <motion.p
-          className={[`${style["byLine"]}`]}
-          variants={byLineVariants}
-          initial="hidden"
-          animate={welcomed ? "visible" : "hidden"}
-        >
-          {byLineLines.map((line) => (
-            <motion.span
-              key={line}
-              className={style["byLineLine"]}
-              variants={byLineLineVariants}
-              style={{ "--line-mask": "0%" }}
-            >
-              {line}
-            </motion.span>
-          ))}
-        </motion.p>
+          <motion.p
+            className={[`${style["byLine"]}`]}
+            variants={byLineVariants}
+            initial="hidden"
+            animate={welcomed ? "visible" : "hidden"}
+          >
+            {byLineLines.map((line) => (
+              <motion.span
+                key={line}
+                className={style["byLineLine"]}
+                variants={byLineLineVariants}
+                style={{ "--line-mask": "0%" }}
+              >
+                {line}
+              </motion.span>
+            ))}
+          </motion.p>
+        </motion.div>
 
         <motion.div
           className={style["buttons"]}
           variants={buttonsVariants}
           initial="hidden"
           animate={welcomed ? "visible" : "hidden"}
+          style={{ "--buttons-glass-opacity": 0 }}
         >
           <motion.a
             href={"https://github.com/doron-pela/"}
