@@ -40,6 +40,8 @@ nav{
     gap: 1em;
     justify-content: space-between;
     width: fit-content;
+	font-family: "Garamond", "Times New Roman", "Baskerville", "Hoefler Text", serif;
+
 
     /* & button{
         border: none;

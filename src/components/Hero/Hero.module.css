@@ -120,6 +120,8 @@ video::-webkit-media-controls{
 	padding: .5rem 1em;
 	font-size: 16pt;
 	font-family: "Didot", "Bodoni MT", "Bodoni Moda", "Times New Roman", serif;
+	font-family: Garamond, "Baskerville Old Face", "Times New Roman", serif;
+
 }
 
 .hero-left .author span p{
@@ -157,7 +159,7 @@ video::-webkit-media-controls{
 		/* font-family: Garamond, "Baskerville Old Face", "Times New Roman", serif; */
 		/* font-family: "Garamond", "Times New Roman", "Baskerville", "Hoefler Text", serif; */
 		font-family: "Didot", "Bodoni MT", "Bodoni Moda", "Times New Roman", serif;
-		font-family: "Papyrus", "Impact", fantasy;
+		/* font-family: "Papyrus", "Impact", fantasy; */
 
 		
 
@@ -166,7 +168,7 @@ video::-webkit-media-controls{
 
 	& p{
 		font-size: 14pt;
-		font-family: "Papyrus", "Impact", fantasy;
+		font-family: "Garamond", "Times New Roman", "Baskerville", "Hoefler Text", serif;
 		word-spacing: 4px;
 		
 	}
