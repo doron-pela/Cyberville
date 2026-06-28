@@ -3,7 +3,6 @@ import { platformIcons } from '../../utils/sidebarIcons.jsx'
 import checkMark from '../../assets/checkmark-circle-svgrepo-com.svg'
 import { CartContext } from "../../contexts/contexts.js";
 import { useContext } from "react";
-import {motion} from 'motion/react'
 
 export default function CardData({gameData, toGamePage}){
 

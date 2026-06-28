@@ -117,7 +117,7 @@ export default function Hero({welcomed, setWelcomed}) {
           `${style["hero-left"]} ${welcomed ? style["welcomed"] : ""}`,
         ]}
       >
-        <h1> Cyberville </h1>
+        <h1 className={style.title}> Cybervylle </h1>
         <p className={[`${style["byLine"]}`]}>
           Your gateway to the ultimate gameverse. Discover, explore, and
           catalogue the newest games the moment they drop, all in one city of
@@ -125,17 +125,18 @@ export default function Hero({welcomed, setWelcomed}) {
         </p>
 
         <div className={style["buttons"]}>
-          <button onClick={() => navigate(`/shop`)} className={`${style.btn} ${style["shop"]}`}>
-            <p>To The Shop</p>
-          </button>
+           <a href={"https://github.com/doron-pela/"} target={"_blank"} className={[`${style["author"]}`]}>
+            <span><img src={githubIcon} alt="github Icon" /><p>By Doron Pela</p></span>
+          </a>
 
           <button onClick={() => clearSiteCache()} className={style["pulse"]}>
             Clear Site cache
           </button>
-          
-          <a href={"https://github.com/doron-pela/"} target={"_blank"} className={[`${style["author"]}`]}>
-            <span><img src={githubIcon} alt="github Icon" />By Doron Pela</span>
-          </a>
+
+          <button onClick={() => navigate(`/shop`)} className={`${style.btn} ${style["shop"]}`}>
+            <p>Explore more!</p>
+          </button>
+
         </div>
 
       </aside>
