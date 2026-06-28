@@ -29,7 +29,7 @@ export default function Nav(){
         <div className={style.rightNav}>
           <Link to={"/"}><img src={home} alt="home-icon" className={style.home} /></Link>
           <Link to={"/shop"}>Shop</Link>
-          <button>{cartIcon && <img onClick={()=>openCart()} src={cartIcon} alt="cart-icon" />}</button>
+          {cartIcon && <img onClick={()=>openCart()} className={style.cart} src={cartIcon} alt="cart-icon" />}
         </div>
       </nav>
     );

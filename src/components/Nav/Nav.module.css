@@ -41,10 +41,10 @@ nav{
     justify-content: space-between;
     width: fit-content;
 
-    & button{
+    /* & button{
         border: none;
         background: transparent;
-    }
+    } */
 
     & .home{
         width: 1.7rem;
