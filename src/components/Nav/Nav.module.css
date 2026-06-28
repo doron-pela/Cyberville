@@ -85,4 +85,9 @@ a, a:active, a:visited{
     .logoTitle{
         display: none;
     }
+
+    .credit{
+        font-size: 2pt; 
+        /* opacity: 0.3;  */
+    }
 }
