@@ -25,15 +25,15 @@ export default function Hero({welcomed, setWelcomed}) {
 
   const videos = [
     {
-      id: "481913",
-      name: "Black Myth Wukong",
-      link: "https://cyberville-hero-video.sfo3.cdn.digitaloceanspaces.com/Black%20Myth%20Wukong%20Trailer.p4",
-    },
-    {
       id: "28492",
       name: "Dead Island",
       link: "https://cyberville-hero-video.sfo3.digitaloceanspaces.com/video-2.mp4",
     },
+    {
+      id: "481913",
+      name: "Black Myth Wukong",
+      link: "https://cyberville-hero-video.sfo3.cdn.digitaloceanspaces.com/Black%20Myth%20Wukong%20Trailer.p4",
+    }
   ];
 
   //Comment out this entire block to use cached data
@@ -68,7 +68,7 @@ export default function Hero({welcomed, setWelcomed}) {
 
 
 
-  const gameList = [blackMythWukongObj, deadIslandObj];
+  const gameList = [deadIslandObj, blackMythWukongObj];
 
   function unMute(e) {
     if (e.target.matches("video")) {
