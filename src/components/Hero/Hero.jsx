@@ -73,7 +73,7 @@ export default function Hero({ welcomed, setWelcomed }) {
 
   const gameList = [deadIslandObj, blackMythWukongObj];
 
-  const titleDuration = 3.5;
+  const titleDuration = 4.5;
   const byLineDelay = titleDuration + 0.35;
   const byLineLineDuration = 1.5;
   const byLineLineStagger = 0.5;
