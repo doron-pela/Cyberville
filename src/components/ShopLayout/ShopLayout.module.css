@@ -136,7 +136,6 @@
     margin-bottom: .5em;
     font-size: 20pt;
     font-weight: 800;
-    margin-top: 6rem; 
   }
 
   & .monthList{
@@ -169,13 +168,13 @@
   }
 }
 
-@media (min-width: 575px){
+@media (min-width: 601px){
   .container{
     --navbar-height: 7rem;
   }
 
   .content .title{
-    margin-top: 4rem; 
+    margin-top: 2rem; 
   }
 
  
@@ -184,7 +183,7 @@
 
 
 /* Responsive */
-@media (max-width: 576px) {
+@media (max-width: 700px) {
   
   .container{
     --navbar-height: 3rem;
@@ -233,7 +232,7 @@
   }
 }
 
-@media screen and (min-width: 400px) and (max-width: 480px) {
+/* @media screen and (min-width: 400px) and (max-width: 480px) {
   .content {
     width: 100%;
     padding: 0 1rem 1.25rem;
@@ -261,4 +260,4 @@
    .sidebar{
     width: fit-content;
   }
-}
+} */

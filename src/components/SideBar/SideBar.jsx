@@ -23,7 +23,7 @@ export default function SideBar({
   const { setSearchEnabled, setSearchTerm } = useContext(SearchContext);
   useEffect(() => {
     function adjustSidebar() {
-      if (window.innerWidth <= 576) {
+      if (window.innerWidth <= 700) {
         setIsHidden(true);
       }
     }
@@ -37,7 +37,7 @@ export default function SideBar({
   const iconSize = 20;
 
   function closeMobileSidebar() {
-    if (window.innerWidth <= 576) {
+    if (window.innerWidth <= 700) {
       setIsHidden(true);
     }
   }
