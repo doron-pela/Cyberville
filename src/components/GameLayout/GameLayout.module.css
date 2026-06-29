@@ -43,6 +43,7 @@
     justify-content: space-between;
 
     & .goBack{
+        margin-right: 2em;
         width: 2em;
         margin-left: 1%;
         cursor: pointer;
@@ -147,6 +148,7 @@
 @media (max-width: 900px){
     .detailsContainer{
         /* height: 100vh; */
+        margin-top: 3em;
     }
     .reviewAnchor{
         width: fit-content;
@@ -184,7 +186,11 @@
         }
 
         & .top, .bottom{
-            padding: .5em 1em;
+            padding: 3em 1em;
+        }
+
+        & .top{
+            margin-top: 0em;
         }
         
     }
