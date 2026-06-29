@@ -83,6 +83,119 @@ a, a:active, a:visited{
     color: white;
 }
 
+@media (max-width: 950px){
+    nav.inShop{
+        height: 3rem;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: .65rem;
+        padding: .35rem .7rem;
+        background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
+            rgba(8, 8, 10, 0.86);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+            0 16px 40px rgba(0, 0, 0, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(22px) saturate(160%);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
+        z-index: 90;
+    }
+
+    nav.inShop .logoBox{
+        gap: .5rem;
+        min-width: 0;
+    }
+
+    nav.inShop .logoBox .imgContainer{
+        width: 2rem;
+        height: 2rem;
+        box-shadow:
+            0 10px 24px rgba(0, 0, 0, 0.28),
+            0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    nav.inShop .logoTitle,
+    nav.inShop .credit{
+        display: none;
+    }
+
+    nav.inShop > :not(.logoBox):not(.rightNav){
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        justify-self: stretch;
+    }
+
+    nav.inShop > :not(.logoBox):not(.rightNav) input{
+        width: 100%;
+        min-width: 0;
+        height: 2.15rem;
+        box-sizing: border-box;
+        border-radius: 999px;
+        background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)),
+            rgba(255, 255, 255, 0.055);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: white;
+        outline: none;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.12),
+            0 10px 28px rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(18px) saturate(150%);
+        -webkit-backdrop-filter: blur(18px) saturate(150%);
+    }
+
+    nav.inShop > :not(.logoBox):not(.rightNav) input::placeholder{
+        color: rgba(255, 255, 255, 0.58);
+    }
+
+    nav.inShop .rightNav{
+        gap: .42rem;
+        padding: .24rem;
+        border-radius: 999px;
+        background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.025)),
+            rgba(0, 0, 0, 0.52);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow:
+            0 12px 30px rgba(0, 0, 0, 0.26),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(18px) saturate(150%);
+        -webkit-backdrop-filter: blur(18px) saturate(150%);
+    }
+
+    nav.inShop .rightNav a{
+        width: 2rem;
+        height: 2rem;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        font-size: 0;
+    }
+
+    nav.inShop .rightNav a[href="/shop"]{
+        display: none;
+    }
+
+    nav.inShop .rightNav .home,
+    nav.inShop .rightNav img{
+        width: 1.2rem;
+        height: 1.2rem;
+        object-fit: contain;
+    }
+
+    nav.inShop .rightNav .cart{
+        width: 2rem;
+        height: 2rem;
+        padding: .42rem;
+        box-sizing: border-box;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
 @media (max-width: 500px) {
     .logoTitle{
         display: none;
@@ -91,5 +204,38 @@ a, a:active, a:visited{
     .credit{
         font-size: 2pt; 
         opacity: 0; 
+    }
+}
+
+@media (max-width: 399px){
+    nav.inShop{
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: .5rem;
+        padding-inline: .55rem;
+    }
+
+    nav.inShop .logoBox .imgContainer{
+        width: 1.85rem;
+        height: 1.85rem;
+    }
+
+    nav.inShop .rightNav{
+        gap: .3rem;
+    }
+
+    nav.inShop .rightNav a,
+    nav.inShop .rightNav .cart{
+        width: 1.85rem;
+        height: 1.85rem;
+    }
+
+    nav.inShop .rightNav .home,
+    nav.inShop .rightNav img{
+        width: 1.08rem;
+        height: 1.08rem;
+    }
+
+    nav.inShop > :not(.logoBox):not(.rightNav) input{
+        height: 2rem;
     }
 }

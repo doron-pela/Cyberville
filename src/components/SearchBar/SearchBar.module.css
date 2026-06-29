@@ -4,8 +4,6 @@
     border-bottom-left-radius: 10px;
     min-width: 8rem;
     color: black;
-    /* margin: 0 8%; */
-    /* width: 80%; */
     height: 100%;
     flex: 1;
     box-shadow:0 4px 9px rgba(0,0,0,.37);
@@ -26,15 +24,10 @@
 }
 
 .searchIcon{
+  position: relative;
   height: 100%;
   width: 2.5rem;
   background-color: var(--sidebar-color);
   cursor: pointer;
   padding: .3em; 
-}
-
-@media (max-width: 600px){
-  .search-bar{
-    text-align: left;
-  }
 }
