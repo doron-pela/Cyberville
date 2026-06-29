@@ -31,7 +31,7 @@ export default function Previews(){
 
   //comment this whole block to use cached fetch
   const monthIndex = new Date().getMonth();
-  const previews = {key: "platforms", index: 1}; //action category at index 0
+  const previews = { key: "release dates", index: 2 }; //action category at index 0
   const { data: previewsData, error, isPending } = useGames(previews, monthIndex);
   // localStorage.setItem("previewsData", JSON.stringify(previewsData));
 
