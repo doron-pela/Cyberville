@@ -1,6 +1,5 @@
 
 
-
 /* SIDEBAR */
 .sidebar {
   scrollbar-width: none;
@@ -85,15 +84,20 @@
     margin-left: calc(var(--side-bar-icon-width));
 
     & .icon{
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+      flex: 0 0 20px;
+      box-sizing: content-box;
+      border: medium solid transparent;
+      border-radius: 5px;
       /* transition: background-color 300ms ease; */
-      border: none;
     }
 
     &:hover{
       & .icon{
         background-color: white;
-        border-radius: 5px;
-        border: medium solid transparent;
         transition: background-color 500ms ease;
         & *{
           color: black;

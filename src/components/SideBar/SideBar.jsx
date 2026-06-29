@@ -50,7 +50,9 @@ export default function SideBar({
   }
 
   return (
-    <section className={`${styles.sidebar} ${isHidden ? styles.hide : styles.isShowing}`}>
+    <section
+      className={`${styles.sidebar} ${isHidden ? styles.hide : styles.isShowing}`}
+    >
       <BiMenu
         size={22}
         className={styles.menuIcon}
