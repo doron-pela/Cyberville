@@ -91,7 +91,7 @@ export default function Previews(){
                   //This card is for the only game with video we can get: GTA V
                   gameData={game1}
                   key={game1}
-                  srcCarousel={game1["short_screenshots"].filter((_, index)=> index!==0) ?? null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  srcCarousel={game1["short_screenshots"]? game1["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
                   backgroundImage={game1["background_image"]}
                 />
               
@@ -104,7 +104,7 @@ export default function Previews(){
                   gameData={game2}
                   className={style["preview-card"]}
                   key={game2['id']}
-                  srcCarousel={game2["short_screenshots"].filter((_, index)=> index!==0) ?? null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  srcCarousel={game2["short_screenshots"]? game2["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
                   backgroundImage={game2["background_image"]}
                 />
               
@@ -117,7 +117,7 @@ export default function Previews(){
                   gameData={game3}
                   className={style["preview-card"]}
                   key={game3['id']}
-                  srcCarousel={game3["short_screenshots"].filter((_, index)=> index!==0) ?? null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  srcCarousel={game3["short_screenshots"]? game3["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
                   backgroundImage={game3["background_image"]}
                 />
               
@@ -130,7 +130,7 @@ export default function Previews(){
                   gameData={game4}
                   className={style["preview-card"]}
                   key={game4['id']}
-                  srcCarousel={game4["short_screenshots"].filter((_, index)=> index!==0) ?? null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
+                  srcCarousel={game4["short_screenshots"]? game4["short_screenshots"].filter((_, index)=> index!==0) : null} //The first screenshot is the same as the background, so it's been filtered out of the carousel
                   backgroundImage={game4["background_image"]}
                 />
               
