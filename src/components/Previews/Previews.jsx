@@ -17,7 +17,11 @@ export default function Previews() {
 
   //comment this whole block to use cached fetch
   //get game1
-  const { data: gameWithVideoData } = useGameWithVideo(3498); //Returns the video game gta. Comment this out after it runs for the first time to allow localStorage caching.
+  const {
+    data: gameWithVideoData,
+    error: gameWithVideoError,
+    isPending: isGameWithVideoPending,
+  } = useGameWithVideo(3498); //Returns the video game gta. Comment this out after it runs for the first time to allow localStorage caching.
   // localStorage.setItem("gameWithVideoData", JSON.stringify(gameWithVideoData));
 
   // //uncomment this whole block to use cached fetch
@@ -39,28 +43,56 @@ export default function Previews() {
   // const isPending = false;
   // const error = false;
 
-  if (isPending)
+  if (isPending || isGameWithVideoPending)
     return (
       <div className={style.loader}>
         <ClimbingBoxLoader color={"white"} size={50} />
       </div>
     );
-  if (error) return <p>Error fetching games: {error.message}</p>;
+  if (gameWithVideoError)
+    return (
+      <p>
+        Error fetching game with video:{" "}
+        {gameWithVideoError?.message ?? "Unknown error"}
+      </p>
+    );
+  if (error)
+    return <p>Error fetching games: {error?.message ?? "Unknown error"}</p>;
   //games: the final games list of size 'n' - 40 in this case
-  const games = previewsData?.pages.flatMap((page) => page.results) ?? []; //The shape of the response data has .pages (the pages/batches of games returned for each game list. Each page then has a .results containing the list of games)
+  const games = Array.isArray(previewsData?.pages)
+    ? previewsData.pages
+        .flatMap((page) => (Array.isArray(page?.results) ? page.results : []))
+        .filter((game) => game && typeof game === "object")
+    : []; //The shape of the response data has .pages (the pages/batches of games returned for each game list. Each page then has a .results containing the list of games)
   if (!games.length) return <p>No games found.</p>;
 
   //get games 2,3 and 4 from games array
   function getRandomNumber(min, max) {
+    if (!Number.isFinite(min) || !Number.isFinite(max) || max < min) {
+      return 0;
+    }
+
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   //Calculate random index for each game grid item from the games results array
-  const randomIndex2 = getRandomNumber(1, games.length - 1);
-  const randomIndex3 = getRandomNumber(1, games.length - 1);
-  const randomIndex4 = getRandomNumber(1, games.length - 1);
+  const randomIndex2 = getRandomNumber(
+    games.length > 1 ? 1 : 0,
+    games.length - 1,
+  );
+  const randomIndex3 = getRandomNumber(
+    games.length > 1 ? 1 : 0,
+    games.length - 1,
+  );
+  const randomIndex4 = getRandomNumber(
+    games.length > 1 ? 1 : 0,
+    games.length - 1,
+  );
 
   //Store reference for each game object.
-  const game1 = gameWithVideoData;
+  const game1 =
+    gameWithVideoData && typeof gameWithVideoData === "object"
+      ? gameWithVideoData
+      : null;
   const game2 = games[randomIndex2];
   const game3 = games[randomIndex3];
   const game4 = games[randomIndex4];
@@ -68,6 +100,8 @@ export default function Previews() {
   // localStorage.setItem("game2", game2);
   // localStorage.setItem("game3", game3);
   // localStorage.setItem("game4", game4);
+
+  if (!game1) return <p>No game with video found.</p>;
 
   return (
     <section className={style["previews-section"]}>
@@ -82,13 +116,15 @@ export default function Previews() {
             <GameCard
               //This card is for the only game with video we can get: GTA V
               gameData={game1}
-              key={game1}
+              key={game1?.["id"] ?? "game-with-video"}
               srcCarousel={
                 Array.isArray(game1?.["short_screenshots"])
-                  ? game1["short_screenshots"].filter((_, index) => index !== 0)
+                  ? game1["short_screenshots"].filter(
+                      (screenshot, index) => index !== 0 && screenshot != null,
+                    )
                   : []
               } //The first screenshot is the same as the background, so it's been filtered out of the carousel
-              backgroundImage={game1["background_image"]}
+              backgroundImage={game1?.["background_image"] ?? ""}
             />
           </div>
         </div>
@@ -101,13 +137,15 @@ export default function Previews() {
             <GameCard
               gameData={game2}
               className={style["preview-card"]}
-              key={game2["id"]}
+              key={game2?.["id"] ?? `preview-game-2-${randomIndex2}`}
               srcCarousel={
                 Array.isArray(game2?.["short_screenshots"])
-                  ? game2["short_screenshots"].filter((_, index) => index !== 0)
+                  ? game2["short_screenshots"].filter(
+                      (screenshot, index) => index !== 0 && screenshot != null,
+                    )
                   : []
               } //The first screenshot is the same as the background, so it's been filtered out of the carousel
-              backgroundImage={game2["background_image"]}
+              backgroundImage={game2?.["background_image"] ?? ""}
             />
           </div>
         </div>
@@ -120,13 +158,15 @@ export default function Previews() {
             <GameCard
               gameData={game3}
               className={style["preview-card"]}
-              key={game3["id"]}
+              key={game3?.["id"] ?? `preview-game-3-${randomIndex3}`}
               srcCarousel={
                 Array.isArray(game3?.["short_screenshots"])
-                  ? game3["short_screenshots"].filter((_, index) => index !== 0)
+                  ? game3["short_screenshots"].filter(
+                      (screenshot, index) => index !== 0 && screenshot != null,
+                    )
                   : []
               } //The first screenshot is the same as the background, so it's been filtered out of the carousel
-              backgroundImage={game3["background_image"]}
+              backgroundImage={game3?.["background_image"] ?? ""}
             />
           </div>
         </div>
@@ -139,13 +179,15 @@ export default function Previews() {
             <GameCard
               gameData={game4}
               className={style["preview-card"]}
-              key={game4["id"]}
+              key={game4?.["id"] ?? `preview-game-4-${randomIndex4}`}
               srcCarousel={
                 Array.isArray(game4?.["short_screenshots"])
-                  ? game4["short_screenshots"].filter((_, index) => index !== 0)
+                  ? game4["short_screenshots"].filter(
+                      (screenshot, index) => index !== 0 && screenshot != null,
+                    )
                   : []
               } //The first screenshot is the same as the background, so it's been filtered out of the carousel
-              backgroundImage={game4["background_image"]}
+              backgroundImage={game4?.["background_image"] ?? ""}
             />
           </div>
         </div>
